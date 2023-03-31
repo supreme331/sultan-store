@@ -1,0 +1,57 @@
+@import 'index';
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex: 1 0 auto;
+}
+
+.head {
+  margin: 50px 0 25px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+h1{
+  display: inline-block;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 120%;
+  text-transform: uppercase;
+  color: #111111;
+}
+
+.sort {
+  display: inline-block;
+}
+
+.sortTriangleUp {
+  @extend .triangleUp;
+}
+
+
+
+.main {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+.cardsList {
+  width: 1020px;
+  display: flex;
+  flex-wrap: wrap;
+  flex: 0 0 auto;
+
+  //li {
+  //  margin-bottom: 21px;
+  //}
+  //
+  //li:nth-child(3n-1) {
+  //  margin: 0 21px 21px 21px;
+  //}
+}
+

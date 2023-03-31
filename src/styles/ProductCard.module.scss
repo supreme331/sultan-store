@@ -1,0 +1,50 @@
+.cardContainer {
+  width: 326px;
+  height: 490px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 23px;
+  background: #FFFFFF;
+  box-shadow: 0 14px 39px -11px rgba(0, 0, 0, 0.06);
+  border-radius: 10px;
+  margin-bottom: 21px;
+}
+
+.cardContainer:nth-child(3n-1) {
+  margin: 0 21px 21px 21px;
+}
+
+.image {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  img {
+    max-height: 194px;
+    border-radius: 5px;
+  }
+}
+
+.weight {
+  margin: 4px 0 10px 0;
+}
+
+h2 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 130%;
+  color: #111111;
+  //margin-bottom: 20px;
+  //max-height: 42px;
+  //overflow: hidden;
+  //text-overflow: clip;
+
+  span {
+    font-weight: 700;
+  }
+}
+
+.addToCart {
+  //margin-top: 15px;
+}

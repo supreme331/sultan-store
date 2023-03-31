@@ -1,0 +1,48 @@
+
+.title {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #111111;
+}
+
+.setCostBlock {
+  margin: 10px 0 30px 0;
+
+  &__subtitle {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 150%;
+    color: #3F4E65;
+    span {
+      font-weight: 500;
+      color: #111111;
+    }
+  }
+}
+
+.setCost {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  input {
+    width: 100px;
+    height: 23px;
+    left: 277px;
+    top: 546px;
+    background: linear-gradient(90deg, rgba(255, 198, 80, 0.3) 0%, rgba(254, 202, 110, 0.3) 97.25%);
+    border-radius: 11px;
+    text-align: center;
+  }
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.btn {
+  display: inline-block;
+}

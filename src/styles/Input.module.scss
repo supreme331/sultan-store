@@ -1,0 +1,51 @@
+.input {
+  max-width: 282px;
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  background: #EDEDED;
+  height: 59px;
+  border-radius: 36px;
+  //position: relative;
+
+  input {
+    flex: 1 1 auto;
+    height: 44px;
+    background: #EDEDED;
+      font-size: 12px;
+      line-height: 150%;
+    //position: absolute;
+    //display: none;
+
+    //cursor: text;
+  }
+}
+
+.inputWhite {
+  @extend .input;
+  background: #FFFFFF;
+  input {
+    background: #FFFFFF;
+  }
+}
+
+.btn {
+  //position: absolute;
+  //right: 10px;
+  //top: -19.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 39px;
+  height: 39px;
+  border-radius: 50%;
+  background: #FFC85E;
+  cursor: pointer;
+}
+//
+//.placeholder {
+
+//  color: #5C6370;
+//}

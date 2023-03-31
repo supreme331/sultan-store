@@ -1,0 +1,150 @@
+@import '../src/index.scss';
+
+.content {
+  display: flex;
+  width: 100%;
+  margin-top: 65px;
+  flex: 1 0 auto;
+}
+
+.image {
+  flex: 0 1 664px;
+  margin-right: 40px;
+  padding: 20px;
+
+  img {
+    width: 100%;
+    border-radius: 10px;
+  }
+}
+
+.information {
+  max-width: 662px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.inStock {
+  font-weight: 500;
+  line-height: 130%;
+  color: #1FD85D;
+}
+
+.title {
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 150%;
+  color: #111111;
+  margin: 10px 0;
+  span {
+    font-weight: 800;
+  }
+}
+
+.addToCart {
+  margin: 25px 0 20px 0;
+}
+
+.additional {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 12px;
+  line-height: 150%;
+  color: #3F4E65;
+  margin-bottom: 35px;
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #FFFFFF;
+    height: 77px;
+    box-shadow: 0 15px 70px -11px rgba(43, 28, 1, 0.04);
+    border-radius: 10px;
+    .bold {
+      font-weight: 700;
+    }
+  }
+  div:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  div:nth-child(2) {
+    width: 316px;
+    padding: 0 35px;
+    text-align: center;
+  }
+
+
+  a {
+    color: #3F4E65;
+  }
+}
+
+.shareBtn {
+  div {
+    width: 77px;
+  }
+}
+
+.priceListBtn {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  div {
+    width: 186px;
+  }
+}
+
+.specificationBlock {
+  margin-bottom: 30px;
+}
+
+.spoilerTitle {
+  display: inline-block;
+  position: relative;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #111111;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.spoilerTriangle {
+  display: inline-block;
+  position: absolute;
+  padding-left: 5px;
+}
+
+.spoilerTriangleUp {
+  @extend .triangleUp;
+  //position: absolute;
+  //top: 9px;
+  //width: 0;
+  //height: 0;
+  //border-style: solid;
+  //border-width: 0 3.5px 7px 3.5px;
+  //border-color: transparent transparent #3f4e65 transparent;
+}
+
+.spoilerTriangleDown {
+  @extend .triangleDown;
+  //position: absolute;
+  //width: 0;
+  //height: 0;
+  //top: 9px;
+  //border-style: solid;
+  //border-width: 7px 3.5px 0 3.5px;
+  //border-color: #3f4e65 transparent transparent transparent;
+}
+
+.descriptionText {
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 150%;
+  color: #3F4E65;
+  text-align: justify;
+}
+

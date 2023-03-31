@@ -1,0 +1,67 @@
+.title {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #111111;
+  margin-bottom: 15px;
+}
+
+.searchInput {
+  margin-bottom: 15px;
+}
+
+.itemsList {
+  margin-bottom: 15px;
+  line-height: 150%;
+  li {
+    color: #3F4E65;
+    .manufacturer {
+      margin-left: 10px;
+
+    }
+
+    .itemsCount {
+      display: inline-block;
+      margin-left: 5px;
+      font-size: 10px;
+    }
+  }
+}
+
+.isOpen {
+  cursor: pointer;
+}
+
+.isOpenTitle {
+  display: inline-block;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 150%;
+  color: #3F4E65;
+}
+
+.spoilerTriangle {
+  display: inline-block;
+  position: absolute;
+  padding-left: 5px;
+}
+
+.spoilerTriangleUp {
+  position: absolute;
+  top: 6px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 3.5px 7px 3.5px;
+  border-color: transparent transparent #3f4e65 transparent;
+}
+
+.spoilerTriangleDown {
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 6px;
+  border-style: solid;
+  border-width: 7px 3.5px 0 3.5px;
+  border-color: #3f4e65 transparent transparent transparent;
+}
