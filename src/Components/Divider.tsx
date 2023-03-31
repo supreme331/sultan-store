@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "../../styles/Divider.module.scss";
+import styles from "../styles/Divider.module.scss";
 
 const Divider: React.FC<DividerProps> = ({widthInPx, heightInPx, direction='horizontal'}) => {
     if (direction === 'horizontal') {

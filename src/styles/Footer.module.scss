@@ -1,8 +1,4 @@
-$maxWidthContainer: 1366;
-$md1: $maxWidthContainer;
-$md2: 992;
-$md3: 768;
-$md4: 560;
+@import "index";
 
 .container {
   width: $maxWidthContainer + px;
@@ -14,31 +10,16 @@ $md4: 560;
   padding: 70px 0 115px 0;
   line-height: 150%;
 
-  //align-items: center;
-
   a {
     color: #FFFFFF;
   }
 }
 
 .footer {
-  //position: relative;
   min-width: 100%;
   background: #3F4E65;
   color: #FFFFFF;
-
 }
-
-//.footer::before {
-//  content: '';
-//  position: absolute;
-//  width: 100%;
-//  bottom: 0;
-//  left: 0;
-//  height: 500px;
-//  background: #3F4E65;
-//  z-index: 1;
-//}
 
 .column {
   display: flex;
@@ -86,7 +67,6 @@ $md4: 560;
 }
 
 .messengers {
-  //margin-top: 15px;
   img {
     margin-right: 10px;
   }

@@ -1,9 +1,13 @@
-
+$maxWidthContainer: 1366;
+$md1: $maxWidthContainer;
+$md2: 992;
+$md3: 768;
+$md4: 560;
 
 #root {
   min-height: 100%;
   display: flex;
-  background: #f1f1f1;
+  background: #ffffff;
 }
 
 .triangleUp {
@@ -24,4 +28,29 @@
   border-style: solid;
   border-width: 7px 3.5px 0 3.5px;
   border-color: #3f4e65 transparent transparent transparent;
+}
+
+.productsCounter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 113px;
+  font-weight: 500;
+  line-height: 130%;
+  color: #3F4E65;
+
+  span:nth-child(1), span:nth-child(3) {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 34px;
+    height: 23px;
+    border-radius: 11px;
+    background: rgba(255, 198, 80, 0.3);
+    cursor: pointer;
+
+    &:hover {
+      background: rgba(255, 198, 80, 0.4);
+    }
+  }
 }

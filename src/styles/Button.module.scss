@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  //padding: 21px 54px;
   height: 59px;
   padding: 0 40px;
   background: #FFC85E;
@@ -12,8 +11,11 @@
   color: #FFFFFF;
   cursor: pointer;
 
-
+  &:hover {
+    background: rgba(255, 200, 94, 0.8);
+  }
 }
+
 .buttonBig {
   @extend .buttonBigText;
   span {

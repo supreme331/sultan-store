@@ -1,6 +1,5 @@
 .infoBlock {
   display: flex;
-  //margin: 14px 0;
 
   img {
     margin-right: 15px;
@@ -10,14 +9,17 @@
     font-weight: 600;
     color: #111111;
   }
+
   &__titleWhite {
     font-weight: 600;
     color: #FFFFFF;
   }
+
   &__subtitle {
     font-weight: 300;
     color: #3F4E65;
   }
+
   &__subtitleWhite {
     font-weight: 300;
     color: #FFFFFF;

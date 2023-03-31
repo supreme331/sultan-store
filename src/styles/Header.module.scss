@@ -1,8 +1,4 @@
-$maxWidthContainer: 1366;
-$md1: $maxWidthContainer;
-$md2: 992;
-$md3: 768;
-$md4: 560;
+@import "index";
 
 header {
   height: 170px;
@@ -12,13 +8,10 @@ header {
 }
 
 .container {
-  //display: flex;
   width: $maxWidthContainer + px;
   font-family: 'Inter', sans-serif;
   margin: 0 auto;
 }
-
-
 
 .firstRow {
   width: 100%;
@@ -33,17 +26,14 @@ header {
   height: 109px;
 }
 
-
 hr {
   height: 1px;
   background: rgba(63, 78, 101, 0.2);
 }
 
-
 .header {
-  &__logo {
+  &__logo {}
 
-  }
   &__menu {
     display: flex;
     justify-content: space-between;
@@ -80,6 +70,5 @@ hr {
       margin-left: 14px;
     }
   }
-
 }
 

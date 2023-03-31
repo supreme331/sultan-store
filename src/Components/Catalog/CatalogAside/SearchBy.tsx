@@ -1,12 +1,12 @@
-import React, {ChangeEvent, useState} from 'react';
-import styles from "../../styles/SearchBy.module.scss";
-import Input, {InputTypes} from "../Input";
-import {useAppDispatch, useAppSelector} from "../../store/hooks/redux";
-import {IProduct} from "../../store/models/IProduct";
-import {
+import React, {ChangeEvent, useEffect, useState} from 'react';
+import styles from "../../../styles/SearchBy.module.scss";
+import Input, {InputTypes} from "../../Input";
+import {useAppDispatch, useAppSelector} from "../../../store/hooks/redux";
+import {IProduct} from "../../../store/models/IProduct";
+import catalogReducer, {
     addSelectedManufacturer, clearSelectedManufacturer,
     deleteSelectedManufacturer
-} from "../../store/reducers/ProductsSlice";
+} from "../../../store/reducers/CatalogSlice";
 
 const SearchBy: React.FC<SearchByProps> = ({
                                                title,
@@ -15,23 +15,25 @@ const SearchBy: React.FC<SearchByProps> = ({
                                            }) => {
     const dispatch = useAppDispatch();
     const parameterItems: { [index: string]: { itemsCount: number, isChecked: boolean } } = {};
-    const selectedManufacturers = useAppSelector(state => state.productReducer.selectedManufacturers)
-    // const selectedBrands = useAppSelector(state => state.productReducer.selectedBrands)
-    const initialProductItems = useAppSelector(state => state.productReducer.productItems)
+    const selectedManufacturers = useAppSelector(state => state.catalogReducer.selectedManufacturers);
+    const initialProductItems = useAppSelector(state => state.catalogReducer.productItems);
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [productItems, setProductItems] = useState<IProduct[]>(initialProductItems)
+    const [productItems, setProductItems] = useState<IProduct[]>(initialProductItems);
+
+    useEffect(() => {
+        setProductItems(initialProductItems);
+    }, [initialProductItems])
+
     // Калькуляция количества товаров по конкретному параметру, установка значения checkbox
     for (let i = 0; i < productItems.length; i++) {
         if (parameterItems[productItems[i][filteringParameter]]) {
             parameterItems[productItems[i][filteringParameter]].itemsCount++
         } else {
             let isChecked = false;
+
             if (filteringParameter === 'manufacturer') {
                 isChecked = selectedManufacturers.includes(productItems[i][filteringParameter])
             }
-            // if (filteringParameter === 'brand') {
-            //     isChecked = selectedBrands.includes(productItems[i][filteringParameter])
-            // }
 
             parameterItems[productItems[i][filteringParameter]] = {
                 itemsCount: 1,
@@ -58,14 +60,6 @@ const SearchBy: React.FC<SearchByProps> = ({
                 dispatch(deleteSelectedManufacturer(e.target.value))
             }
         }
-        // if (filteringParameter === 'brand') {
-        //     if (e.target.checked) {
-        //         dispatch(addSelectedBrand(e.target.value))
-        //     }
-        //     if (!e.target.checked) {
-        //         dispatch(deleteSelectedBrand(e.target.value))
-        //     }
-        // }
     }
 
     function onFilterParameters(value: string) {
@@ -80,8 +74,7 @@ const SearchBy: React.FC<SearchByProps> = ({
                 <Input
                     inputType={InputTypes.search}
                     placeholder={filteringParameter === 'manufacturer'
-                        ? 'Поиск производителя...'
-                        : filteringParameter === 'brand' ? 'Поиск бренда' : ''}
+                        ? 'Поиск производителя...' : ''}
                     onButtonClick={onFilterParameters}/>
             </div>
             <ul className={styles.itemsList}>
@@ -106,7 +99,14 @@ const SearchBy: React.FC<SearchByProps> = ({
                             name={filteringParameter}
                             value={arr[0]}
                             checked={arr[1].isChecked}/>
-                        <span className={styles.manufacturer}>{arr[0]}</span>
+                        {
+                            arr[0].length > 20 ?
+                                <div className={styles.manufacturerCropped}>
+                                    <span>{arr[0].slice(0, 20) + '...'}</span>
+                                    <span className={styles.tooltip}>{arr[0]}</span>
+                                </div>
+                                : <div className={styles.manufacturer}>{arr[0]}</div>
+                        }
                         <div className={styles.itemsCount}>({arr[1].itemsCount})</div>
                     </label></li>)
                 }
@@ -123,8 +123,7 @@ const SearchBy: React.FC<SearchByProps> = ({
 
 interface SearchByProps {
     title: string;
-    // productItems: IProduct[];
-    filteringParameter: 'manufacturer' | 'brand'; // 'brand' на случай добавления блока фильтрации по бренду
+    filteringParameter: 'manufacturer';
 }
 
 export default SearchBy;

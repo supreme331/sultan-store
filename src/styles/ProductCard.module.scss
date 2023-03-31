@@ -9,6 +9,10 @@
   box-shadow: 0 14px 39px -11px rgba(0, 0, 0, 0.06);
   border-radius: 10px;
   margin-bottom: 21px;
+
+  &:hover {
+    background: #F6F6F6;
+  }
 }
 
 .cardContainer:nth-child(3n-1) {
@@ -30,21 +34,15 @@
   margin: 4px 0 10px 0;
 }
 
-h2 {
+.title {
   font-weight: 500;
   font-size: 16px;
   line-height: 130%;
   color: #111111;
-  //margin-bottom: 20px;
-  //max-height: 42px;
-  //overflow: hidden;
-  //text-overflow: clip;
 
   span {
     font-weight: 700;
   }
 }
 
-.addToCart {
-  //margin-top: 15px;
-}
+.addToCart {}

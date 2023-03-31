@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../../styles/CallUs.module.scss";
+import styles from "../styles/CallUs.module.scss";
 
 interface CallUsProps {
     textAlign?: 'right' | 'left'

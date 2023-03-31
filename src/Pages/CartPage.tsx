@@ -1,25 +1,29 @@
-import React, {useState} from 'react';
-import styles from '../../styles/CartPage.module.scss';
-import PageContainer from "../../Components/PageContainer/PageContainer";
-import BreadCrumbs from "../../Components/BreadCrumbs/BreadCrumbs";
-import CartItems from "../../Components/Cart/CartItems";
-import {useAppDispatch, useAppSelector} from "../../store/hooks/redux";
-import {IProduct} from "../../store/models/IProduct";
-import Button from "../../Components/Button/Button";
-import Divider from "../../Components/Divider/Divider";
-import doubleCheckIcon from '../../img/double-check-icon.svg';
-import closeIcon from '../../img/close-icon.svg';
-import {clearCart} from "../../store/reducers/CartSlice";
-
-
+import React, {useEffect, useState} from 'react';
+import styles from '../styles/CartPage.module.scss';
+import PageContainer from "../Components/PageContainer";
+import BreadCrumbs from "../Components/BreadCrumbs";
+import CartItems from "../Components/Cart/CartItems";
+import {useAppDispatch, useAppSelector} from "../store/hooks/redux";
+import {IProduct} from "../store/models/IProduct";
+import Button from "../Components/Button";
+import Divider from "../Components/Divider";
+import doubleCheckIcon from '../img/double-check-icon.svg';
+import closeIcon from '../img/close-icon.svg';
+import {clearCart} from "../store/reducers/CartSlice";
+import {scrollToUp} from "../utils/utils";
+import catalogReducer from "../store/reducers/CatalogSlice";
 
 const CartPage = () => {
     const cartItems = useAppSelector(state => state.cartReducer.cartItems);
     const totalPrice = useAppSelector(state => state.cartReducer.totalPrice);
-    const productItems = useAppSelector(state => state.productReducer.productItems);
+    const productItems = useAppSelector(state => state.catalogReducer.productItems);
     const items: IProduct[] = [];
     const dispatch = useAppDispatch();
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+    useEffect(() => {
+        scrollToUp();
+    }, [])
 
     for (let i = 0; i < cartItems.length; i++) {
         const product = productItems.find(product => product.id === cartItems[i].id);
@@ -38,12 +42,12 @@ const CartPage = () => {
                 <div className={styles.head}>
                     <h1 className={styles.title}>Корзина</h1>
                 </div>
-                <Divider />
+                <Divider/>
                 {items.length
                     ? <CartItems items={items}/>
                     : <div className={styles.emptyCart}>
                         <div>Корзина пуста</div>
-                        <Divider />
+                        <Divider/>
                     </div>}
 
                 <div className={styles.footer}>
@@ -68,7 +72,5 @@ const CartPage = () => {
         </PageContainer>
     );
 };
-
-
 
 export default CartPage;

@@ -1,3 +1,5 @@
+@import 'index';
+
 .title {
   font-weight: 500;
   font-size: 16px;
@@ -13,11 +15,41 @@
 .itemsList {
   margin-bottom: 15px;
   line-height: 150%;
+
   li {
     color: #3F4E65;
-    .manufacturer {
-      margin-left: 10px;
 
+    .manufacturer {
+      display: inline-block;
+      margin-left: 10px;
+    }
+
+    .manufacturerCropped {
+      @extend .manufacturer;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tooltip {
+      width: max-content;
+      display: none;
+      position: absolute;
+      top: -35px;
+      left: 0;
+      padding: 5px;
+      border: 1px solid #d0d0d0;
+      border-radius: 5px;
+      z-index: 5;
+      background-color: #ffffff;
+      transition: all ease 0.3s;
+    }
+
+    .manufacturerCropped:hover {
+      .tooltip {
+        display: block;
+
+
+      }
     }
 
     .itemsCount {
@@ -40,28 +72,18 @@
   color: #3F4E65;
 }
 
-.spoilerTriangle {
+.isOpenTriangle {
   display: inline-block;
   position: absolute;
   padding-left: 5px;
 }
 
-.spoilerTriangleUp {
-  position: absolute;
+.isOpenTriangleUp {
+  @extend .triangleUp;
   top: 6px;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 0 3.5px 7px 3.5px;
-  border-color: transparent transparent #3f4e65 transparent;
 }
 
-.spoilerTriangleDown {
-  position: absolute;
-  width: 0;
-  height: 0;
+.isOpenTriangleDown {
+  @extend .triangleDown;
   top: 6px;
-  border-style: solid;
-  border-width: 7px 3.5px 0 3.5px;
-  border-color: #3f4e65 transparent transparent transparent;
 }

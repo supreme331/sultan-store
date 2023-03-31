@@ -1,8 +1,4 @@
-$maxWidthContainer: 1366;
-$md1: $maxWidthContainer;
-$md2: 992;
-$md3: 768;
-$md4: 560;
+@import "index";
 
 .root {
   width: $maxWidthContainer + px;

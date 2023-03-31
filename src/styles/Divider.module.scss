@@ -1,6 +1,5 @@
 .horizontal {
   display: inline-block;
-  //width: 100%;
   opacity: 0.3;
   border-bottom: 1px dashed #3F4E65;
   margin: 20px 0;
@@ -8,8 +7,7 @@
 
 .vertical {
   @extend .horizontal;
-  //height: 100%;
   border-bottom: none;
   border-right: 1px dashed #3F4E65;
-  margin: 10px 0;
+  margin: 0 10px;
 }

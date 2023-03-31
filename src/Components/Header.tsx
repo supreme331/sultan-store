@@ -1,21 +1,26 @@
 import React from 'react';
-import styles from '../../styles/Header.module.scss';
-import geoIcon from '../../img/geo-icon.svg';
-import mailIcon from '../../img/mail-icon.svg';
-import catalogIcon from '../../img/catalog-icon.svg';
-import priceIcon from '../../img/price-icon.svg';
-import callUsImg from '../../img/call-us.png';
+import styles from '../styles/Header.module.scss';
+import geoIcon from '../img/geo-icon.svg';
+import mailIcon from '../img/mail-icon.svg';
+import catalogIcon from '../img/catalog-icon.svg';
+import priceIcon from '../img/price-icon.svg';
+import callUsImg from '../img/call-us.png';
 import {Link} from "react-router-dom";
-import Button from "../Button";
-import Input, {InputTypes} from "../Input";
-import CartHeaderBlock from "../Cart/CartHeaderBlock";
-import CallUs from "../CallUs";
-import InfoItem from "../InfoItem";
-import Logo from "../Logo";
+import Button from "./Button";
+import Input, {InputTypes} from "./Input";
+import CartHeaderBlock from "./Cart/CartHeaderBlock";
+import CallUs from "./CallUs";
+import InfoItem from "./InfoItem";
+import Logo from "./Logo";
+import {showAllProducts} from "../store/reducers/CatalogSlice";
+import {useAppDispatch} from "../store/hooks/redux";
 
 
 
 const Header: React.FC = () => {
+
+    const dispatch = useAppDispatch();
+
     return (
         <header>
             <div className={styles.container}>
@@ -44,7 +49,9 @@ const Header: React.FC = () => {
                         <Logo shade='dark' />
                     </div>
                     <div className={styles.header__catalogSearch}>
-                        <Link className={styles.header__catalogSearchBtn} to='/'>
+                        <Link onClick={() => dispatch(showAllProducts())}
+                              className={styles.header__catalogSearchBtn}
+                              to='/'>
                             <Button text='Каталог' icon={catalogIcon} alt="каталог"/>
                         </Link>
                         <Input
@@ -68,10 +75,10 @@ const Header: React.FC = () => {
 const HeaderMenu: React.FC = () => {
     return (
         <ul className={styles.header__menu}>
-            <li><Link to='/about'>О компании</Link></li>
-            <li><Link to='/delivery'>Доставка и оплата</Link></li>
-            <li><Link to='/refund'>Возврат</Link></li>
-            <li><Link to='/contacts'>Контакты</Link></li>
+            <li><Link to='/'>О компании</Link></li>
+            <li><Link to='/'>Доставка и оплата</Link></li>
+            <li><Link to='/'>Возврат</Link></li>
+            <li><Link to='/'>Контакты</Link></li>
         </ul>
     );
 };

@@ -1,19 +1,19 @@
 import React from "react";
-import styles from "../../styles/CatalogAside.module.scss";
+import styles from "../../../styles/CatalogAside.module.scss";
 import SelectionByParameters from "./SelectionByParameters";
 import AsideSection from "./AsideSection";
 import {
-    bodyCare,
-    faceCare,
-    footCare,
-    giftSets,
-    hairCare,
-    handsCare,
-    shaving,
-    tanning, typeOfCare
-} from "../../store/models/IProduct";
-import Divider from "../Divider";
-import {useAppSelector} from "../../store/hooks/redux";
+    EBodyCare,
+    EFaceCare,
+    EFootCare,
+    EGiftSets,
+    EHairCare,
+    EHandsCare,
+    EShaving,
+    ETanning, ETypeOfCare
+} from "../../../store/enums/EProducts";
+import Divider from "../../Divider";
+import {useAppSelector} from "../../../store/hooks/redux";
 
 const CatalogAside: React.FC<CatalogAsideProps> = ({onFilterApply}) => {
 
@@ -23,21 +23,21 @@ const CatalogAside: React.FC<CatalogAsideProps> = ({onFilterApply}) => {
             <div className={styles.selection}>
                 <SelectionByParameters onButtonClick={onFilterApply} />
             </div>
-            <AsideSection title={typeOfCare.body} subTypeOfCareEnum={bodyCare}/>
+            <AsideSection title={ETypeOfCare.body} subTypeOfCareEnum={EBodyCare}/>
             <Divider widthInPx={238} />
-            <AsideSection title={typeOfCare.hands} subTypeOfCareEnum={handsCare}/>
+            <AsideSection title={ETypeOfCare.hands} subTypeOfCareEnum={EHandsCare}/>
             <Divider widthInPx={238} />
-            <AsideSection title={typeOfCare.foot} subTypeOfCareEnum={footCare}/>
+            <AsideSection title={ETypeOfCare.foot} subTypeOfCareEnum={EFootCare}/>
             <Divider widthInPx={238} />
-            <AsideSection title={typeOfCare.face} subTypeOfCareEnum={faceCare}/>
+            <AsideSection title={ETypeOfCare.face} subTypeOfCareEnum={EFaceCare}/>
             <Divider widthInPx={238} />
-            <AsideSection title={typeOfCare.hair} subTypeOfCareEnum={hairCare}/>
+            <AsideSection title={ETypeOfCare.hair} subTypeOfCareEnum={EHairCare}/>
             <Divider widthInPx={238} />
-            <AsideSection title={typeOfCare.tanning} subTypeOfCareEnum={tanning}/>
+            <AsideSection title={ETypeOfCare.tanning} subTypeOfCareEnum={ETanning}/>
             <Divider widthInPx={238} />
-            <AsideSection title={typeOfCare.shaving} subTypeOfCareEnum={shaving}/>
+            <AsideSection title={ETypeOfCare.shaving} subTypeOfCareEnum={EShaving}/>
             <Divider widthInPx={238} />
-            <AsideSection title={typeOfCare.giftSets} subTypeOfCareEnum={giftSets}/>
+            <AsideSection title={ETypeOfCare.giftSets} subTypeOfCareEnum={EGiftSets}/>
         </div>
     )
 }

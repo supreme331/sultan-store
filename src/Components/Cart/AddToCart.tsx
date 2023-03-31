@@ -1,26 +1,64 @@
-import React from 'react';
-import cartIcon from "../../img/cart-icon.svg";
-import styles from './CartBlock.module.scss';
+import React, {useState} from 'react';
+import styles from "../../styles/AddToCart.module.scss";
+import Button from "../Button";
+import cartIcon from "../../img/cart-small-icon.svg";
+import {useAppDispatch, useAppSelector} from "../../store/hooks/redux";
+import {addToCart} from "../../store/reducers/CartSlice";
 import {Link} from "react-router-dom";
 
-interface CartBlockProps {
-    cartItemsCount: number;
-    totalPrice: number;
-}
+const AddToCart: React.FC<AddToCartProps> = ({price, id, isFull = false}) => {
+    const dispatch = useAppDispatch();
+    const cartItems = useAppSelector(state => state.cartReducer.cartItems);
 
-const CartBlock: React.FC<CartBlockProps> = ({cartItemsCount, totalPrice}) => {
-    return (
-        <Link to='/' className={styles.cartBlock}>
-            <div className={styles.cartBlock__icon}>
-                <img src={cartIcon} alt="корзина"/>
-                <span className={styles.cartBlock__itemsCount}>{cartItemsCount}</span>
+    const initialIsInCart = cartItems.some(item => item.id === id);
+
+    const [amount, setAmount] = useState(1);
+    const [isInCart, setIsInCart] = useState<boolean>(initialIsInCart);
+    function onAddToCart() {
+        dispatch(addToCart({price, id, amount}));
+        setIsInCart(true);
+    }
+
+    function increaseAmount() {
+        setAmount(prev => prev + 1);
+    }
+    function decreaseAmount() {
+        if (amount > 1) {
+            setAmount(prev => prev - 1);
+        }
+    }
+
+    if (!isInCart) {
+        return (
+            <div className={isFull ? styles.addToCartFull : styles.addToCart}>
+                <div className={isFull ? styles.priceFull : styles.price}>{price} ₽</div>
+                {isFull && <div className={styles.counter}>
+                    <span onClick={() => decreaseAmount()}>-</span>
+                    <span>{amount}</span>
+                    <span onClick={() => increaseAmount()}>+</span>
+                </div>}
+                <div onClick={() => onAddToCart()}>
+                    <Button text='В корзину' icon={cartIcon} alt='корзина' size='Medium'/>
+                </div>
             </div>
-            <div>
-                <div>Корзина</div>
-                <div className={styles.cartBlock__totalPrice}>{totalPrice}<span> ₽</span></div>
+        );
+    } else {
+        return (
+            <div className={isFull ? styles.addToCartFull : styles.addToCart}>
+                <div className={isFull ? styles.priceFull : styles.price}>{price} ₽</div>
+
+                <Link to='/cart'>
+                    <Button text='Перейти в корзину' size='Medium'/>
+                </Link>
             </div>
-        </Link>
-    );
+        );
+    }
 };
 
-export default CartBlock;
+interface AddToCartProps {
+    price: number;
+    id: number;
+    isFull?: boolean;
+}
+
+export default AddToCart;

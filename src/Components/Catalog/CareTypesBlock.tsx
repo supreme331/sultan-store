@@ -1,20 +1,24 @@
 import React from 'react';
-import styles from "../styles/CareTypesBlock.module.scss";
-import {typeOfCare} from "../store/models/IProduct";
-import {showAllProductsOfType} from "../store/reducers/ProductsSlice";
-import {useAppDispatch} from "../store/hooks/redux";
+import styles from "../../styles/CareTypesBlock.module.scss";
+
+import {showAllProductsOfType} from "../../store/reducers/CatalogSlice";
+import {useAppDispatch, useAppSelector} from "../../store/hooks/redux";
+import {ETypeOfCare} from "../../store/enums/EProducts";
 
 const CareTypesBlock = () => {
 
-    const dispatch = useAppDispatch()
+    const dispatch = useAppDispatch();
+    const currentTypeOfCare = useAppSelector(state => state.catalogReducer.currentTypeOfCare);
 
     return (
         <ul className={styles.typeOfCare}>
             {
-                Object.values(typeOfCare)
+                Object.values(ETypeOfCare)
                     .map((value) =>
                         <li key={value}
-                            className={styles.typeOfCare__item}
+                            className={currentTypeOfCare === value
+                                ? styles.typeOfCareActiveItem
+                                : styles.typeOfCareItem}
                         onClick={() => dispatch(showAllProductsOfType(value))}>
                             {value}
                         </li>)

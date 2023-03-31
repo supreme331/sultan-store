@@ -1,3 +1,5 @@
+@import 'index';
+
 .addToCartFull {
   width: 490px;
 
@@ -23,21 +25,5 @@
 }
 
 .counter {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 113px;
-  font-weight: 500;
-  line-height: 130%;
-  color: #3F4E65;
-  span:nth-child(1), span:nth-child(3) {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 34px;
-    height: 23px;
-    border-radius: 11px;
-    background: rgba(255, 198, 80, 0.3);
-    cursor: pointer;
-  }
+  @extend .productsCounter;
 }

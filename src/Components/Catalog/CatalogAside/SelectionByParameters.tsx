@@ -1,14 +1,13 @@
 import React, {useState} from 'react';
-import styles from "../../styles/SelectionByParameters.module.scss";
+import styles from "../../../styles/SelectionByParameters.module.scss";
 import SearchBy from "./SearchBy";
-import Button from "../Button";
-import deleteIcon from "../../img/delete-icon.svg";
-import {useAppDispatch, useAppSelector} from "../../store/hooks/redux";
-import Divider from "../Divider";
-import {clearSelectedManufacturer} from "../../store/reducers/ProductsSlice";
+import Button from "../../Button";
+import deleteIcon from "../../../img/delete-icon.svg";
+import {useAppDispatch, useAppSelector} from "../../../store/hooks/redux";
+import Divider from "../../Divider";
+import {clearSelectedManufacturer} from "../../../store/reducers/CatalogSlice";
 
 const SelectionByParameters: React.FC<SelectionByParametersProps> = ({onButtonClick}) => {
-    // const productItems = useAppSelector(state => state.productReducer.productItems);
     const dispatch = useAppDispatch();
     const [minPrice, setMinPrice] = useState<number>(0);
     const [maxPrice, setMaxPrice] = useState<number>(10000);
@@ -38,15 +37,8 @@ const SelectionByParameters: React.FC<SelectionByParametersProps> = ({onButtonCl
             </div>
             <div>
                 <SearchBy title='Производитель'
-                    // sortingItems={Array.from(new Set(manufacturers))}
                           filteringParameter='manufacturer'/>
             </div>
-            {/*<Divider widthInPx={238} />*/}
-            {/*<div>*/}
-            {/*    <SearchBy title='Бренд'*/}
-            {/*        // sortingItems={Array.from(new Set(manufacturers))}*/}
-            {/*              filteringParameter='brand'/>*/}
-            {/*</div>*/}
             <div className={styles.buttons}>
                 <div onClick={() => onButtonClick(minPrice, maxPrice)} className={styles.btn}>
                     <Button text='Показать'/>

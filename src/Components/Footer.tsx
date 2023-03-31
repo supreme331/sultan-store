@@ -1,16 +1,16 @@
 import React from 'react';
-import styles from '../../styles/Footer.module.scss';
-import Input, {InputTypes} from "../Input";
+import styles from '../styles/Footer.module.scss';
+import Input, {InputTypes} from "./Input";
 import {Link} from "react-router-dom";
-import priceIcon from "../../img/price-icon.svg";
-import whatsAppIcon from "../../img/whats-app-icon.svg";
-import telegramIcon from "../../img/telegram-icon.svg";
-import visaIcon from "../../img/visa.svg";
-import mastercardIcon from "../../img/mastercard.svg";
-import Button from "../Button";
-import CallUs from "../CallUs";
-import InfoItem from "../InfoItem";
-import Logo from "../Logo";
+import priceIcon from "../img/price-icon.svg";
+import whatsAppIcon from "../img/whats-app-icon.svg";
+import telegramIcon from "../img/telegram-icon.svg";
+import visaIcon from "../img/visa.svg";
+import mastercardIcon from "../img/mastercard.svg";
+import Button from "./Button";
+import CallUs from "./CallUs";
+import InfoItem from "./InfoItem";
+import Logo from "./Logo";
 
 const Footer: React.FC = () => {
     return (

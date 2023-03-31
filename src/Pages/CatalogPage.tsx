@@ -1,80 +1,92 @@
 import React, {useEffect, useState} from 'react';
-import BreadCrumbs from "../../Components/BreadCrumbs/BreadCrumbs";
-import PageContainer from "../../Components/PageContainer/PageContainer";
-import styles from '../../styles/CatalogPage.module.scss';
+import BreadCrumbs from "../Components/BreadCrumbs";
+import PageContainer from "../Components/PageContainer";
+import styles from '../styles/CatalogPage.module.scss';
 import {
-    bodyCare,
-    faceCare,
-    footCare, giftSets,
-    hairCare,
-    handsCare,
-    IProduct, shaving,
-    tanning,
-    typeOfCare
-} from "../../store/models/IProduct";
-import {useAppDispatch, useAppSelector} from "../../store/hooks/redux";
-import Weight from "../../Components/Weight/Weight";
-import SpecificationProperty from "../../Components/SpecificationProperty/SpecificationProperty";
-import AddToCart from "../../Components/Cart/AddToCart";
-import ProductCard from "../../Components/CardsBlock/ProductCard";
-import CatalogAside from "../../Components/CatalogAside/CatalogAside";
-import CardsBlock from "../../Components/CardsBlock/CardsBlock";
-import CareTypesBlock from "../../Components/CareTypesBlock/CareTypesBlock";
-import {setCurrentTypeOfCare} from "../../store/reducers/ProductsSlice";
-
-interface CatalogProps {
-
-}
+    EBodyCare,
+    EFaceCare,
+    EFootCare,
+    EGiftSets,
+    EHairCare,
+    EHandsCare,
+    EShaving,
+    ETanning,
+    ETypeOfCare
+} from "../store/enums/EProducts";
+import {useAppDispatch, useAppSelector} from "../store/hooks/redux";
+import CatalogAside from "../Components/Catalog/CatalogAside/CatalogAside";
+import CardsBlock from "../Components/Catalog/CardsBlock/CardsBlock";
+import CareTypesBlock from "../Components/Catalog/CareTypesBlock";
+import {setCurrentTypeOfCare} from "../store/reducers/CatalogSlice";
+import SortBy from "../Components/Catalog/SortBy";
+import {ESortByVariants} from "../store/enums/ECatalog";
+import {IProduct} from "../store/models/IProduct";
+import {useNavigate, useParams} from "react-router";
+import {fetchProductItems} from "../store/reducers/ActionCreators";
+import Loader from "../Components/Loader";
 
 const CatalogPage: React.FC<CatalogProps> = () => {
-
-    const productItems = useAppSelector(state => state.productReducer.productItems);
-    const currentSubtypeOfCare = useAppSelector(state => state.productReducer.currentSubtypeOfCare);
-    const currentTypeOfCare = useAppSelector(state => state.productReducer.currentTypeOfCare);
-    const selectedManufacturers = useAppSelector(state => state.productReducer.selectedManufacturers);
+    const isLoading = useAppSelector(state => state.catalogReducer.isLoading);
+    const {currentPage} = useParams();
+    const navigate = useNavigate();
+    const productItems = useAppSelector(state => state.catalogReducer.productItems);
+    const currentSubtypeOfCare = useAppSelector(state => state.catalogReducer.currentSubtypeOfCare);
+    const currentTypeOfCare = useAppSelector(state => state.catalogReducer.currentTypeOfCare);
+    const selectedManufacturers = useAppSelector(state => state.catalogReducer.selectedManufacturers);
     const dispatch = useAppDispatch();
-    // let cardItems: IProduct[] = [];
     const [cardItems, setCardItems] = useState<IProduct[]>(productItems);
-    const [isSortListOpen, setIsSortListOpen] = useState<boolean>(false);
+    const [sortBy, setSortBy] = useState<ESortByVariants>(ESortByVariants.ascendingPrices);
+
+    useEffect(() => {
+        dispatch(fetchProductItems());
+    }, [])
+
+    useEffect(() => {
+        setCardItems(productItems);
+    }, [productItems])
+
+    useEffect(() => {
+        if (!currentPage) {
+            navigate('/catalog/1')
+        }
+    }, [currentPage])
 
     useEffect(() => {
         if (currentSubtypeOfCare) {
             // @ts-ignore
-            if (Object.values(bodyCare).includes(currentSubtypeOfCare)) {
-                dispatch(setCurrentTypeOfCare(typeOfCare.body))
+            if (Object.values(EBodyCare).includes(currentSubtypeOfCare)) {
+                dispatch(setCurrentTypeOfCare(ETypeOfCare.body));
             }
             // @ts-ignore
-            if (Object.values(handsCare).includes(currentSubtypeOfCare)) {
-                dispatch(setCurrentTypeOfCare(typeOfCare.hands))
+            if (Object.values(EHandsCare).includes(currentSubtypeOfCare)) {
+                dispatch(setCurrentTypeOfCare(ETypeOfCare.hands));
             }
             // @ts-ignore
-            if (Object.values(footCare).includes(currentSubtypeOfCare)) {
-                dispatch(setCurrentTypeOfCare(typeOfCare.foot))
+            if (Object.values(EFootCare).includes(currentSubtypeOfCare)) {
+                dispatch(setCurrentTypeOfCare(ETypeOfCare.foot));
             }
             // @ts-ignore
-            if (Object.values(faceCare).includes(currentSubtypeOfCare)) {
-                dispatch(setCurrentTypeOfCare(typeOfCare.face))
+            if (Object.values(EFaceCare).includes(currentSubtypeOfCare)) {
+                dispatch(setCurrentTypeOfCare(ETypeOfCare.face));
             }
             // @ts-ignore
-            if (Object.values(hairCare).includes(currentSubtypeOfCare)) {
-                dispatch(setCurrentTypeOfCare(typeOfCare.hair))
+            if (Object.values(EHairCare).includes(currentSubtypeOfCare)) {
+                dispatch(setCurrentTypeOfCare(ETypeOfCare.hair));
             }
             // @ts-ignore
-            if (Object.values(tanning).includes(currentSubtypeOfCare)) {
-                dispatch(setCurrentTypeOfCare(typeOfCare.tanning))
+            if (Object.values(ETanning).includes(currentSubtypeOfCare)) {
+                dispatch(setCurrentTypeOfCare(ETypeOfCare.tanning));
             }
             // @ts-ignore
-            if (Object.values(shaving).includes(currentSubtypeOfCare)) {
-                dispatch(setCurrentTypeOfCare(typeOfCare.shaving))
+            if (Object.values(EShaving).includes(currentSubtypeOfCare)) {
+                dispatch(setCurrentTypeOfCare(ETypeOfCare.shaving));
             }
             // @ts-ignore
-            if (Object.values(giftSets).includes(currentSubtypeOfCare)) {
-                dispatch(setCurrentTypeOfCare(typeOfCare.giftSets))
+            if (Object.values(EGiftSets).includes(currentSubtypeOfCare)) {
+                dispatch(setCurrentTypeOfCare(ETypeOfCare.giftSets));
             }
         }
     }, [currentSubtypeOfCare])
-
-
 
     useEffect(() => {
         if (!currentTypeOfCare && !currentSubtypeOfCare) {
@@ -86,8 +98,35 @@ const CatalogPage: React.FC<CatalogProps> = () => {
         if (currentTypeOfCare && currentSubtypeOfCare) {
             setCardItems(productItems.filter(item => item.subtypeOfCare?.includes(currentSubtypeOfCare)))
         }
-    },[currentTypeOfCare, currentSubtypeOfCare])
+    }, [currentTypeOfCare, currentSubtypeOfCare])
 
+    useEffect(() => {
+        if (sortBy === ESortByVariants.ascendingPrices) {
+
+            setCardItems([...cardItems].sort((a, b) => a.price - b.price));
+        }
+        if (sortBy === ESortByVariants.descendingPrices) {
+            setCardItems([...cardItems].sort((a, b) => b.price - a.price));
+        }
+        if (sortBy === ESortByVariants.nameAZ) {
+            setCardItems([...cardItems].sort((a, b) => {
+                if (a.title > b.title) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            }));
+        }
+        if (sortBy === ESortByVariants.nameZA) {
+            setCardItems([...cardItems].sort((a, b) => {
+                if (a.title < b.title) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            }));
+        }
+    }, [sortBy])
 
     function onFilterApply(minPrice: number, maxPrice: number) {
         let items = productItems.filter(item => item.price > minPrice && item.price < maxPrice)
@@ -98,8 +137,8 @@ const CatalogPage: React.FC<CatalogProps> = () => {
         setCardItems(items);
     }
 
-    function onChangeSort() {
-
+    function onChangeSort(sortValue: ESortByVariants) {
+        setSortBy(sortValue);
     }
 
     return (
@@ -108,25 +147,20 @@ const CatalogPage: React.FC<CatalogProps> = () => {
             <div className={styles.content}>
                 <div className={styles.head}>
                     <h1>Каталог</h1>
-                    <div className={styles.sort}>
-                        <div>Сортировка:</div> <span>Название</span> <div className={styles.spoilerTriangle}>
-                        <span className={isSortListOpen ? styles.sortTriangleUp : styles.sortTriangleDown}></span>
-                    </div>
-                    </div>
+                    <SortBy sortBy={sortBy} onChangeSort={onChangeSort}/>
                 </div>
-                <CareTypesBlock />
+                <CareTypesBlock/>
                 <main className={styles.main}>
                     <CatalogAside onFilterApply={onFilterApply}/>
-                    <CardsBlock cardItems={cardItems} />
+                    {isLoading ? <Loader /> : <CardsBlock cardItems={cardItems}/>}
                 </main>
             </div>
         </PageContainer>
     );
 };
 
+interface CatalogProps {
 
-
-
-
+}
 
 export default CatalogPage;

@@ -1,4 +1,4 @@
-export enum typeOfCare {
+export enum ETypeOfCare {
     body = 'Уход за телом',
     hands = 'Уход за руками',
     foot = 'Уход за ногами',
@@ -13,7 +13,7 @@ export enum typeOfCare {
 }
 
 
-export enum bodyCare {
+export enum EBodyCare {
     epilationAndDepilation = 'Эпиляция и депиляция',
     bathAndShower = 'Средства для ванны и душа',
     scrubsAndPeels = 'Скрабы, пилинги и пр.',
@@ -24,7 +24,7 @@ export enum bodyCare {
     showerGels = 'Гели для душа',
 }
 
-export enum handsCare {
+export enum EHandsCare {
     hydrationAndNutrition = 'Увлажнение и питание',
     nails = 'Средства для ногтей',
     solidSoap = 'Мыло твердое',
@@ -34,14 +34,14 @@ export enum handsCare {
     nailPolishRemover = 'Жидкость для снятия лака',
 }
 
-export enum footCare {
+export enum EFootCare {
     scrubsAndPeels = 'Скрабы, пилинги',
     nailFileAndRoller = 'Пилки, ролики',
     footCream = 'Крем для ног',
     feetDeodorants = 'Дезодоранты для ног',
 }
 
-export enum faceCare {
+export enum EFaceCare {
     tonalMeans = 'Тональные средства',
     makeupRemover = 'Средства для снятия макияжа',
     cleansing = 'Средства для очищения',
@@ -51,7 +51,7 @@ export enum faceCare {
     hygienicLipstick = 'Гигиеническая помада',
 }
 
-export enum hairCare {
+export enum EHairCare {
     shampoos = 'Шампуни',
     styling = 'Средства для укладки',
     hairColoring = 'Средства для окрашивания волос',
@@ -59,17 +59,17 @@ export enum hairCare {
     conditionersBalms = 'Кондиционеры, бальзамы',
 }
 
-export enum tanning {
+export enum ETanning {
     afterSun = 'Средства после загара',
 }
 
-export enum shaving {
+export enum EShaving {
     ShavingMachinesAndCassetes = 'Станки и кассеты',
     afterShaving = 'После бритья',
     forShaving = 'Для бритья',
 }
 
-export enum giftSets {
+export enum EGiftSets {
     forMen = 'Для мужчин',
     forWomen = 'Для женщин',
 }

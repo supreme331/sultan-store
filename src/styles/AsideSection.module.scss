@@ -8,10 +8,23 @@
   cursor: pointer;
 }
 
-.sectionList {
-  li {
-    line-height: 150%;
-    color: #3F4E65;
-    cursor: pointer;
+.activeTitle {
+  @extend .title;
+  text-decoration: underline;
+}
+
+.subtypeItem {
+  line-height: 150%;
+  color: #3F4E65;
+  cursor: pointer;
+
+  &:hover {
+    color: #111111;
   }
+}
+
+.subtypeActiveItem {
+  @extend .subtypeItem;
+  text-decoration: underline;
+  color: #111111;
 }
