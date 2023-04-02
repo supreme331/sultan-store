@@ -180,6 +180,13 @@
   background: #d0d0d0;
 }
 
+.validationErrorMessage {
+  @extend .inputTitle;
+  width: 100%;
+  padding: 10px;
+  color: red;
+}
+
 
 //============================MEDIA============================
 

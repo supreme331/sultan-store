@@ -14,6 +14,7 @@ import {
 import {useAppDispatch} from "../../store/hooks/redux";
 import {IProduct} from "../../store/models/IProduct";
 import {addProductItem, editProductItem} from "../../store/reducers/CatalogSlice";
+import {scrollToUp} from "../../utils/utils";
 
 const AddProduct: React.FC<AddProductProps> = ({editingProduct, finishEditing}) => {
 
@@ -38,6 +39,7 @@ const AddProduct: React.FC<AddProductProps> = ({editingProduct, finishEditing}) 
     const [typeOfSize, setTypeOfSize] = useState<'volume' | 'weight'>('volume');
     const [size, setSize] = useState<string>('');
     const [description, setDescription] = useState<string>('');
+    const [validationErrorMessage, setValidationErrorMessage] = useState<string>('')
 
     // Странный момент, не происходит ререндер чекбоксов subtypesOfCare при снятии чекбокса,
     // пришлось использовать костыль с дополнительным пропсом, чтобы заставить их ререндериться
@@ -228,8 +230,41 @@ const AddProduct: React.FC<AddProductProps> = ({editingProduct, finishEditing}) 
         }
     }
 
+    function validateForm(product: IProduct) {
+        const isValidTitle = product.title.length > 0;
+        const isValidBrand = product.brand.length > 0;
+        const isValidManufacturer = product.manufacturer.length > 0;
+        const isValidBarcode = product.barcode.length > 7 && !Number.isNaN(+product.barcode);
+        const isValidPrice = !Number.isNaN(+product.price) && +product.price > 0;
+        const isValidSize = product.size.length && !Number.isNaN(+product.size);
+        const isValidTypeOfCare = product.typeOfCare.length > 0;
+        const isValidDescription = product.description.length > 0;
+        let isValidUrl;
+
+        try {
+            const url = new URL(product.url);
+            isValidUrl = !!url.href;
+        } catch (e) {
+            isValidUrl = false;
+        }
+
+        return {
+            isValidTitle,
+            isValidBrand,
+            isValidManufacturer,
+            isValidBarcode,
+            isValidPrice,
+            isValidSize,
+            isValidTypeOfCare,
+            isValidDescription,
+            isValidUrl,
+        }
+    }
+
     function onHandleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
+
+        setValidationErrorMessage('');
 
         const product: IProduct = {
             id: +barcode,
@@ -246,10 +281,41 @@ const AddProduct: React.FC<AddProductProps> = ({editingProduct, finishEditing}) 
             description: description,
         };
 
-        if (isEditing) {
+        const validationData = validateForm(product);
+        const isValid = Object.values(validationData).every(value => value === true);
+
+        if (!isValid) {
+
+            const messages: string[] = [];
+
+            Object.entries(validationData).forEach(entry => {
+                if (!entry[1]) {
+
+                    let message;
+
+                    if (entry[0] === 'isValidTitle') message = 'Введите корректный заголовок.';
+                    if (entry[0] === 'isValidBrand') message = 'Введите бренд.';
+                    if (entry[0] === 'isValidManufacturer') message = 'Введите производителя.';
+                    if (entry[0] === 'isValidBarcode') message = 'Введите штрихкод (штрихкод не может быть менее 8 цифр).';
+                    if (entry[0] === 'isValidPrice') message = 'Введите корректную цену.';
+                    if (entry[0] === 'isValidUrl') message = 'Укажите корректную ссылку на изображение.';
+                    if (entry[0] === 'isValidSize') message = 'Введите корректное количество объема/веса.';
+                    if (entry[0] === 'isValidTypeOfCare') message = 'Необходимо указать как минимум 1 из типов ухода.';
+                    if (entry[0] === 'isValidDescription') message = 'Введите описание.';
+
+                    message && messages.push(message);
+                }
+            })
+
+            setValidationErrorMessage(messages.join(' '));
+            scrollToUp();
+            return;
+        }
+
+        if (isEditing && isValid) {
             dispatch(editProductItem(product));
         }
-        if (!isEditing) {
+        if (!isEditing && isValid) {
             dispatch(addProductItem(product));
         }
 
@@ -258,6 +324,11 @@ const AddProduct: React.FC<AddProductProps> = ({editingProduct, finishEditing}) 
 
     return (
         <div className={styles.addProduct}>
+            {
+                validationErrorMessage ? <div className={styles.validationErrorMessage}>
+                    {validationErrorMessage}
+                </div> : null
+            }
             <form action="#"
                   onSubmit={(e) => onHandleSubmit(e)}
                   className={styles.addProductForm}>
