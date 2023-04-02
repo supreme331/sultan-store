@@ -74,12 +74,6 @@
     margin-right: 10px;
   }
 
-  div:nth-child(2) {
-    width: 316px;
-    padding: 0 35px;
-    text-align: center;
-  }
-
   a {
     color: #3F4E65;
   }
@@ -88,6 +82,12 @@
 .shareBtn {
   cursor: pointer;
   width: 77px;
+}
+
+.freeDelivery {
+  width: 316px;
+  padding: 0 35px;
+  text-align: center;
 }
 
 .priceListBtn {
@@ -110,3 +110,104 @@
   text-align: justify;
 }
 
+
+//============================MEDIA============================
+
+// Max-width 1366px
+@media (max-width: $md1+px) {
+  .container {
+    width: 980px;
+  }
+}
+
+// Max-width 992px
+@media (max-width: $md2+px) {
+  .container {
+    width: 756px;
+  }
+
+  .information {
+    max-width: 400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .image {
+    margin-right: 0;
+    margin-bottom: 20px;
+    padding: 20px;
+
+    img {
+      width: 100%;
+      border-radius: 10px;
+    }
+  }
+}
+
+// Max-width 768px
+@media (max-width: $md3+px) {
+  .container {
+    width: 468px;
+  }
+
+  .content {
+    margin-top: 25px;
+    flex-direction: column;
+  }
+}
+
+// Max-width 480px
+@media (max-width: $md4+px) {
+  .content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 25px;
+    flex: 1 0 auto;
+  }
+
+  .image {
+    flex: 1 0 256px;
+    margin: 0;
+    padding: 0;
+
+    img {
+      width: 100%;
+      border-radius: 5px;
+    }
+  }
+
+  .title {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #111111;
+    margin: 10px 0;
+
+    span {
+      font-weight: 800;
+    }
+  }
+
+  .weightBlock {
+    display: none;
+  }
+
+  .additional {
+    flex-wrap: wrap;
+  }
+
+  .shareBtn {
+    order: 1;
+  }
+  .priceListBtn {
+    order: 2;
+  }
+
+  .freeDelivery {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+  }
+}

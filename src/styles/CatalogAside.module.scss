@@ -1,7 +1,47 @@
+@import "index";
+
 .aside {
   width: 238px;
 }
 
 .selection {
   margin-bottom: 40px;
+}
+
+.careTypesBlock {
+  display: none;
+}
+
+.sortBy {
+  display: none;
+}
+
+// Max-width 768px
+@media (max-width: $md3+px) {
+  .aside {
+    width: 284px;
+  }
+
+  .careTypesBlock {
+    display: block;
+  }
+
+  .careSubtypesBlock {
+    display: none;
+  }
+
+  .selection {
+    margin-bottom: 15px;
+  }
+
+  .sortBy {
+    display: block;
+  }
+}
+
+// Max-width 480px
+@media (max-width: $md4+px) {
+  .aside {
+    width: 280px;
+  }
 }

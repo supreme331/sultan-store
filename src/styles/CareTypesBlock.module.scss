@@ -1,3 +1,5 @@
+@import "index";
+
 .typeOfCare {
   display: flex;
   justify-content: space-between;
@@ -24,4 +26,41 @@
 .typeOfCareActiveItem {
   @extend .typeOfCareItem;
   background: #f1f1f1;
+}
+
+//============================MEDIA============================
+
+// Max-width 1366px
+@media (max-width: $md1+px) {
+  .typeOfCare {
+    width: 980px;
+    flex-wrap: wrap;
+  }
+
+  .typeOfCareItem {
+    max-width: 143px;
+  }
+}
+
+// Max-width 992px
+@media (max-width: $md2+px) {
+  .typeOfCare {
+    width: 756px;
+    justify-content: center;
+  }
+}
+
+// Max-width 768px
+@media (max-width: $md3+px) {
+  .typeOfCare {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 25px;
+  }
+
+  .typeOfCareItem {
+    max-width: 100%;
+    padding: 0;
+    margin-bottom: 10px;
+  }
 }

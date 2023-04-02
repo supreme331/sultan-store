@@ -10,6 +10,7 @@ import {IProduct} from "../store/models/IProduct";
 import {deleteProductItem} from "../store/reducers/CatalogSlice";
 
 const AdminPanelPage = () => {
+
     const dispatch = useAppDispatch();
     const productItems = useAppSelector(state => state.catalogReducer.productItems);
     const [activeBlock, setActiveBlock] = useState<'addProduct' | 'productsList' | 'editProduct'>('productsList');
@@ -60,14 +61,13 @@ const AdminPanelPage = () => {
     return (
         <PageContainer>
             <div className={styles.adminPanel}>
-                <AdminAside setActiveBlock={setActiveBlock}/>
+                <AdminAside setActiveBlock={setActiveBlock} deleteSelectedProducts={deleteSelectedProducts}/>
                 <main className={styles.main}>
                     {activeBlock === 'productsList' &&
                         <AdminProductList
                             productItems={productItems}
                             editProduct={editProduct}
-                            onChangeSelect={onChangeSelect}
-                            deleteSelectedProducts={deleteSelectedProducts}/>}
+                            onChangeSelect={onChangeSelect}/>}
                     {activeBlock === 'addProduct' && <AddProduct finishEditing={finishEditing}/>}
                     {activeBlock === 'editProduct' && editingProduct && <AddProduct finishEditing={finishEditing}
                                                                                     editingProduct={editingProduct}/>}

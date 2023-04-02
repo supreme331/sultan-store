@@ -18,11 +18,16 @@ const AsideSection: React.FC<AsideSectionProps> = ({title, subTypeOfCareEnum}) =
 
     return (
         <div>
-            <h3 onClick={() => dispatch(showAllProductsOfType(title))} className={isActive ? styles.activeTitle : styles.title}>{title}</h3>
+            <h3 onClick={() => dispatch(showAllProductsOfType(title))}
+                className={isActive ? styles.activeTitle : styles.title}>{title}</h3>
             <ul>
                 {
                     Object.values(subTypeOfCareEnum).map((value) => typeof value !== 'number' &&
-                        <li  className={currentSubtypeOfCare === value ? styles.subtypeActiveItem : styles.subtypeItem} onClick={() => dispatch(setCurrentSubtypeOfCare(value))} key={value}>{value}</li>)
+                        <li  className={currentSubtypeOfCare === value
+                            ? styles.subtypeActiveItem
+                            : styles.subtypeItem}
+                             onClick={() => dispatch(setCurrentSubtypeOfCare(value))}
+                             key={value}>{value}</li>)
                 }
             </ul>
         </div>
@@ -35,5 +40,3 @@ interface AsideSectionProps {
 }
 
 export default AsideSection;
-
-//EBodyCare | EHandsCare | EFootCare | EFaceCare | EHairCare | ETanning | EShaving | EGiftSets

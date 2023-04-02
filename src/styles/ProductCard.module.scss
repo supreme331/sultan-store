@@ -1,3 +1,5 @@
+@import "index";
+
 .cardContainer {
   width: 326px;
   height: 490px;
@@ -45,4 +47,30 @@
   }
 }
 
-.addToCart {}
+
+//============================MEDIA============================
+
+// Max-width 1366px
+@media (max-width: $md1+px) {
+  .cardContainer:nth-child(3n-1) {
+    margin: 0 0 21px 0;
+  }
+
+  .cardContainer:nth-child(2n-1) {
+    margin: 0 21px 21px 21px;
+  }
+}
+
+// Max-width 768px
+@media (max-width: $md3+px) {
+  .cardContainer:nth-child(2n-1) {
+    margin: 0 0 21px 0;
+  }
+}
+
+// Max-width 480px
+@media (max-width: $md4+px) {
+  .cardContainer:nth-child(3n-1) {
+    margin: 0 0 21px 0;
+  }
+}

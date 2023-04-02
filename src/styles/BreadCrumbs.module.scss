@@ -1,3 +1,5 @@
+@import "index";
+
 .breadCrumbs {
   display: flex;
   align-items: center;
@@ -10,9 +12,16 @@
   }
 }
 
-.breadCrumbItem {
-}
-
 .breadCrumbItem:first-child {
   padding-left: 0;
+}
+
+
+//============================MEDIA============================
+
+// Max-width 480px
+@media (max-width: $md4+px) {
+  .breadCrumbs {
+    display: none;
+  }
 }

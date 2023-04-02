@@ -11,6 +11,7 @@ import doubleCheckIcon from '../img/double-check-icon.svg';
 import closeIcon from '../img/close-icon.svg';
 import {clearCart} from "../store/reducers/CartSlice";
 import {scrollToUp} from "../utils/utils";
+import GoBackButton from "../Components/GoBackButton";
 
 const CartPage = () => {
 
@@ -31,13 +32,16 @@ const CartPage = () => {
     }
 
     function onPlaceOrder() {
-        setIsModalOpen(true);
-        dispatch(clearCart());
+        if (items.length) {
+            setIsModalOpen(true);
+            dispatch(clearCart());
+        }
     }
 
     return (
         <PageContainer>
             <BreadCrumbs catalogName='Корзина' catalogUrl='/cart'/>
+            <GoBackButton redirectTo='/catalog/' />
             <div className={styles.content}>
                 <div className={styles.head}>
                     <h1 className={styles.title}>Корзина</h1>
@@ -51,7 +55,7 @@ const CartPage = () => {
                     </div>}
 
                 <div className={styles.footer}>
-                    <div onClick={onPlaceOrder}>
+                    <div  className={styles.placeOrderBtn} onClick={onPlaceOrder}>
                         <Button text='Оформить заказ'/>
                     </div>
                     <div className={styles.totalPrice}>{totalPrice}<span> ₽</span></div>

@@ -1,4 +1,6 @@
-.menu {
+@import "index";
+
+.menuList {
   display: flex;
   justify-content: space-between;
   height: 29px;
@@ -6,7 +8,84 @@
   flex: 1 1 auto;
   line-height: 150%;
   color: #3F4E65;
+
   a {
     color: #3F4E65;
+  }
+}
+
+.menuMobile {
+  margin: 20px auto;
+}
+
+.menuMobileContainer {
+  width: 280px;
+  font-family: 'Inter', sans-serif;
+  margin: 0 auto;
+}
+
+.infoElemMobile {
+  margin-bottom: 15px;
+
+  a {
+    color: #3F4E65;
+  }
+
+  .workingTime {
+    display: block;
+    margin: 5px 0 0 33px;
+  }
+}
+
+.menuListMobile {
+  @extend .menuList;
+  flex-direction: column;
+  margin-bottom: 25px;
+  height: auto;
+
+  li:not(:last-child) {
+    margin-bottom: 20px;
+  }
+}
+
+.menuMobileTitle {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 150%;
+  color: #3F4E65;
+  margin-bottom: 25px;
+}
+
+.placeACall {
+  display: flex;
+  align-items: center;
+
+  span {
+    font-size: 10px;
+    line-height: 150%;
+    text-decoration-line: underline;
+    color: #3F4E65;
+    margin-left: 7px;
+  }
+}
+
+.placeACallBtn {
+  @extend .circleMobileBtn;
+}
+
+
+//============================MEDIA============================
+
+// Max-width 992px
+@media (max-width: $md2+px) {
+  .menuList {
+    flex-wrap: wrap;
+    max-width: 330px;
+    height: 58px;
+    justify-content: flex-start;
+  }
+
+  .menuListItem {
+    margin: 0 10px;
   }
 }

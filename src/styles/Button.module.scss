@@ -28,9 +28,20 @@
   height: 45px;
   padding: 0 25px;
 }
+.buttonSmallText {
+  @extend .buttonBigText;
+  height: 39px;
+  padding: 0 18px;
+}
 
 .buttonMedium {
   @extend .buttonMediumText;
+  span {
+    margin-right: 12px;
+  }
+}
+.buttonSmall {
+  @extend .buttonSmallText;
   span {
     margin-right: 12px;
   }

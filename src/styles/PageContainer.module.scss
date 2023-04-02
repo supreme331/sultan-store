@@ -9,3 +9,35 @@
   flex-direction: column;
   flex: 1 1 100%;
 }
+
+
+//============================MEDIA============================
+
+// Max-width 1366px
+@media (max-width: $md1+px) {
+  .root {
+    width: 980px;
+  }
+}
+
+// Max-width 992px
+@media (max-width: $md2+px) {
+  .root {
+    width: 756px;
+  }
+}
+
+// Max-width 768px
+@media (max-width: $md3+px) {
+  .root {
+    width: 468px;
+  }
+}
+
+// Max-width 480px
+@media (max-width: $md4+px) {
+  .root {
+    width: 280px;
+    padding: 20px 0 50px 0;
+  }
+}

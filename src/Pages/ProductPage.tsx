@@ -14,6 +14,7 @@ import Spoiler from '../Components/Spoiler';
 import {fetchProductItems} from "../store/reducers/ActionCreators";
 import {scrollToUp} from "../utils/utils";
 import EmptyBlock from "../Components/EmptyBlock";
+import GoBackButton from "../Components/GoBackButton";
 
 
 
@@ -37,6 +38,7 @@ const ProductPage: React.FC = () => {
                     <BreadCrumbs
                         productName={product.title}
                         productUrl={'/catalog/' + product.barcode}/>
+                    <GoBackButton redirectTo='/catalog/1' />
                     <div className={styles.content}>
                         <div className={styles.image}>
                             <img src={product.url} alt={product.brand}/>
@@ -44,7 +46,9 @@ const ProductPage: React.FC = () => {
                         <div className={styles.information}>
                             <div className={styles.inStock}>В наличии</div>
                             <h1 className={styles.title}><span>{product.brand}</span> {product.title}</h1>
-                            <Weight typeOfSize={product.typeOfSize} size={product.size}/>
+                            <div className={styles.weightBlock}>
+                                <Weight typeOfSize={product.typeOfSize} size={product.size}/>
+                            </div>
                             <div className={styles.addToCart}>
                                 <AddToCart isFull={true} price={product.price} id={product.id}/>
                             </div>
@@ -52,7 +56,7 @@ const ProductPage: React.FC = () => {
                                 <div className={styles.shareBtn}>
                                     <img src={shareIcon} alt="поделиться"/>
                                 </div>
-                                <div>
+                                <div className={styles.freeDelivery}>
                                     <span>
                                         При покупке от <span className={styles.bold}> 2 000 ₽ </span> бесплатная доставка по Кокчетаву и области
                                     </span>

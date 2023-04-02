@@ -1,3 +1,5 @@
+@import "index";
+
 .content {
   display: flex;
   flex-direction: column;
@@ -12,7 +14,7 @@
   align-items: flex-end;
 }
 
-h1{
+.title {
   display: inline-block;
   font-weight: 500;
   font-size: 40px;
@@ -20,12 +22,52 @@ h1{
   text-transform: uppercase;
   color: #111111;
 }
-
 .main {
   display: flex;
   justify-content: space-between;
 }
 
+//============================MEDIA============================
 
+// Max-width 1366px
+@media (max-width: $md1+px) {
+  .content {
+    width: 980px;
+  }
+}
 
+// Max-width 992px
+@media (max-width: $md2+px) {
+  .content {
+    width: 756px;
+  }
+}
 
+// Max-width 768px
+@media (max-width: $md3+px) {
+  .content {
+    width: 468px;
+  }
+
+  .head {
+    margin: 35px 0 15px 0;
+  }
+
+  .careTypesBlock {
+    display: none;
+  }
+
+  .title{
+    font-size: 20px;
+  }
+
+  .sortBy {
+    display: none;
+  }
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

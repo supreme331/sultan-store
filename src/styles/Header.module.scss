@@ -1,16 +1,33 @@
 @import "index";
 
-header {
+.headerDesktop {
   height: 170px;
   display: flex;
   flex-direction: column;
   flex: 1 1 100%;
 }
 
+.headerMobile {
+  @extend .headerDesktop;
+  display: none;
+  flex: 0 1 100%;
+  height: 103px;
+  position: relative;
+  z-index: 15;
+}
+
 .container {
   width: $maxWidthContainer + px;
   font-family: 'Inter', sans-serif;
   margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.containerMobile {
+  @extend .container;
+  width: 280px;
 }
 
 .firstRow {
@@ -21,9 +38,52 @@ header {
   height: 60px;
 }
 
+.firstRowMobile {
+  @extend .firstRow;
+    height: 51px;
+    margin-top: 10px;
+  .openMenuMobile {
+    @extend .circleMobileBtn;
+  }
+}
+
 .secondRow {
   @extend .firstRow;
   height: 109px;
+}
+
+.secondRowMobile {
+  @extend .firstRow;
+  justify-content: space-around;
+  height: 41px;
+
+  .mobileBtn {
+    display: flex;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #3F4E65;
+
+    img {
+      width: 15px;
+      height: 15px;
+    }
+
+    span {
+      margin-left: 6px;
+    }
+  }
+
+  a {
+    color: #3F4E65;
+  }
+}
+
+.headerMenuMobile {
+  position: absolute;
+  width: 100%;
+  z-index: 15;
+  background: #FFFFFF;
 }
 
 hr {
@@ -32,8 +92,6 @@ hr {
 }
 
 .header {
-  &__logo {}
-
   &__infoBlock {
     display: flex;
     justify-content: space-between;
@@ -61,11 +119,77 @@ hr {
 
 //============================MEDIA============================
 
+// Max-width 1366px
+@media (max-width: $md1+px) {
+  .container {
+    width: 980px;
+  }
+
+  .header {
+    &__infoBlock {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      height: 100%;
+    }
+
+    &__callUsBlock {
+      img {
+        display: none;
+      }
+    }
+  }
+
+  .headerDesktop {
+    height: 190px;
+  }
+
+  .firstRow {
+    height: 80px;
+  }
+
+  .priceBtn {
+    display: none;
+  }
+}
+
+// Max-width 992px
+@media (max-width: $md2+px) {
+  .container {
+    width: 756px;
+  }
+
+  .header {
+    &__logo {
+      img {
+        width: 97px;
+        height: 41px;
+      }
+    }
+
+    &__callUsBlock {
+      display: none;
+    }
+  }
+}
+
+// Max-width 768px
+@media (max-width: $md3+px) {
+  .container {
+    width: 468px;
+  }
+  .headerDesktop {
+    display: none;
+  }
+
+  .headerMobile {
+    display: flex;
+  }
+}
 
 // Max-width 480px
-@media (max-width: $md5+px) {
+@media (max-width: $md4+px) {
   .container {
     width: 280px;
-
   }
 }

@@ -15,10 +15,34 @@
   }
 }
 
+.containerMobile {
+  width: 280px;
+  font-family: 'Inter', sans-serif;
+  margin: 0 auto;
+  line-height: 150%;
+
+  a {
+    color: #FFFFFF;
+  }
+}
+
 .footer {
   min-width: 100%;
   background: #3F4E65;
   color: #FFFFFF;
+}
+
+.footerMobile {
+  @extend .footer;
+  display: none;
+  padding: 15px 0;
+}
+
+.rowMobile {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
 }
 
 .column {
@@ -45,9 +69,24 @@
   font-size: 16px;
 }
 
+.aboutTextMobile {
+  margin-bottom: 15px;
+  font-size: 12px;
+  line-height: 150%;
+  color: #FFFFFF;
+}
+
+.contactsMobile {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .subscribeText {
   font-size: 12px;
   margin-bottom: 15px;
+  display: block;
 }
 
 .subtitle {
@@ -62,6 +101,13 @@
   }
 }
 
+.footerMenuList {
+  font-size: 12px;
+  line-height: 150%;
+  color: #FFFFFF;
+  margin-top: 15px;
+}
+
 .priceBtn {
   margin-bottom: 20px;
 }
@@ -72,6 +118,10 @@
   }
 }
 
+.messengersMobile {
+  max-width: 100px;
+}
+
 .mailBlock {
   margin: 25px 0;
 }
@@ -79,5 +129,64 @@
 .payment {
   img {
     margin-right: 5px;
+  }
+}
+
+//============================MEDIA============================
+
+// Max-width 1366px
+@media (max-width: $md1+px) {
+  .container {
+    width: 980px;
+    padding: 70px 70px 115px 70px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .column:not(:last-child) {
+    padding-right: 111px;
+  }
+
+  .column:first-child {
+    padding-right: 75px;
+    margin-bottom: 20px;
+  }
+}
+
+// Max-width 992px
+@media (max-width: $md2+px) {
+  .container {
+    width: 756px;
+    padding: 70px 20px 115px 20px;
+  }
+
+  .column:not(:last-child) {
+    padding-right: 48px;
+  }
+
+  .column:last-child {
+    margin-left: 65px;
+  }
+}
+
+// Max-width 768px
+@media (max-width: $md3+px) {
+  .container {
+    width: 468px;
+  }
+
+  .footer {
+    display: none;
+  }
+
+  .footerMobile {
+    display: block;
+  }
+}
+
+// Max-width 480px
+@media (max-width: $md4+px) {
+  .container {
+    width: 280px;
   }
 }

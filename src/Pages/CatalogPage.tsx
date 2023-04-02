@@ -24,6 +24,7 @@ import {IProduct} from "../store/models/IProduct";
 import {useNavigate, useParams} from "react-router";
 import {fetchProductItems} from "../store/reducers/ActionCreators";
 import Loader from "../Components/Loader";
+import GoBackButton from "../Components/GoBackButton";
 
 const CatalogPage: React.FC<CatalogProps> = () => {
 
@@ -148,14 +149,19 @@ const CatalogPage: React.FC<CatalogProps> = () => {
     return (
         <PageContainer>
             <BreadCrumbs/>
+            <GoBackButton redirectTo='/' />
             <div className={styles.content}>
                 <div className={styles.head}>
-                    <h1>Каталог</h1>
-                    <SortBy sortBy={sortBy} onChangeSort={onChangeSort}/>
+                    <h1 className={styles.title}>Каталог</h1>
+                    <div className={styles.sortBy}>
+                        <SortBy sortBy={sortBy} onChangeSort={onChangeSort}/>
+                    </div>
                 </div>
-                <CareTypesBlock/>
+                <div className={styles.careTypesBlock}>
+                    <CareTypesBlock/>
+                </div>
                 <main className={styles.main}>
-                    <CatalogAside onFilterApply={onFilterApply}/>
+                    <CatalogAside onFilterApply={onFilterApply} sortBy={sortBy} onChangeSort={onChangeSort}/>
                     {isLoading ? <Loader /> : <CardsBlock cardItems={cardItems}/>}
                 </main>
             </div>

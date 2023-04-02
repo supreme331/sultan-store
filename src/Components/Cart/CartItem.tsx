@@ -37,7 +37,9 @@ const CartItem: React.FC<CartItemProps> = ({productItem}) => {
                     </p>
                 </div>
                 <div  className={styles.edit}>
-                    <Divider direction='vertical' heightInPx={49}/>
+                    <div className={styles.needlessDividerInMobile}>
+                        <Divider direction='vertical' heightInPx={49}/>
+                    </div>
                     <div className={styles.counter}>
                         <span onClick={() => dispatch(decreaseAmount({id: productItem.id}))}>-</span>
                         <span>{cartItem?.amount}</span>

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from "../../styles/AdminPanel.module.scss";
 
-const AdminAside: React.FC<AdminAsideProps> = ({setActiveBlock}) => {
+const AdminAside: React.FC<AdminAsideProps> = ({setActiveBlock, deleteSelectedProducts}) => {
     return (
         <aside className={styles.aside}>
             <ul className={styles.asideMenu}>
@@ -9,6 +9,8 @@ const AdminAside: React.FC<AdminAsideProps> = ({setActiveBlock}) => {
                     className={styles.asideMenuItem}>Добавить товар</li>
                 <li onClick={() => setActiveBlock('productsList')}
                     className={styles.asideMenuItem}>Список товаров</li>
+                <li onClick={() => deleteSelectedProducts()}
+                    className={styles.asideMenuItem}>Удалить отмеченные</li>
             </ul>
         </aside>
     );
@@ -16,6 +18,7 @@ const AdminAside: React.FC<AdminAsideProps> = ({setActiveBlock}) => {
 
 interface AdminAsideProps {
     setActiveBlock: (activeBlock: 'addProduct' | 'productsList') => void;
+    deleteSelectedProducts: () => void;
 }
 
 export default AdminAside;

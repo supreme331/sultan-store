@@ -34,8 +34,6 @@ const SortBy: React.FC<SortByProps> = ({sortBy, onChangeSort}) => {
                     {ESortByVariants.nameZA}
                 </li>
             </ul>
-
-
         </div>
     );
 };

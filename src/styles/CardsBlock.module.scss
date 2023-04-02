@@ -1,3 +1,5 @@
+@import "index";
+
 .cardsBlock {
   width: 1020px;
 }
@@ -9,3 +11,38 @@
   flex: 0 0 auto;
 }
 
+
+//============================MEDIA============================
+
+// Max-width 1366px
+@media (max-width: $md1+px) {
+  .cardsBlock {
+    width: 980px;
+    margin-left: 30px;
+  }
+}
+
+// Max-width 992px
+@media (max-width: $md2+px) {
+  .cardsBlock {
+    width: 756px;
+  }
+
+  .cardsList {
+    justify-content: space-around;
+  }
+}
+
+// Max-width 768px
+@media (max-width: $md3+px) {
+  .cardsBlock {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .cardsList {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    //align-items: flex-start;
+  }
+}

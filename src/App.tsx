@@ -12,6 +12,7 @@ import {initializeApp} from "./store/reducers/CatalogSlice";
 import AdminPanelPage from "./Pages/AdminPanelPage";
 
 function App() {
+
     const dispatch = useAppDispatch();
 
     useEffect(() => {

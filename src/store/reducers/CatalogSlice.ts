@@ -45,7 +45,15 @@ export const catalogSlice = createSlice({
         setCurrentTypeOfCare: (state: CatalogState, action: PayloadAction<'' | ETypeOfCare>) => {
             state.currentTypeOfCare = action.payload;
         },
-        setCurrentSubtypeOfCare: (state: CatalogState, action: PayloadAction<'' | EBodyCare | EHandsCare | EFootCare | EFaceCare | EHairCare | ETanning | EShaving | EGiftSets>) => {
+        setCurrentSubtypeOfCare: (state: CatalogState, action: PayloadAction<''
+            | EBodyCare
+            | EHandsCare
+            | EFootCare
+            | EFaceCare
+            | EHairCare
+            | ETanning
+            | EShaving
+            | EGiftSets>) => {
             state.currentSubtypeOfCare = action.payload;
         },
         showAllProducts: (state: CatalogState) => {
@@ -77,7 +85,7 @@ export const catalogSlice = createSlice({
             const data = JSON.stringify(state.productItems);
             localStorage.setItem('productItems', data);
         },
-        deleteProductItem: (state: CatalogState, action: PayloadAction<{productId: number}>) => {
+        deleteProductItem: (state: CatalogState, action: PayloadAction<{ productId: number }>) => {
             const index = state.productItems.findIndex(product => product.id === action.payload.productId);
             state.productItems.splice(index, 1);
             const data = JSON.stringify(state.productItems);

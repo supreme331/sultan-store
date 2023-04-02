@@ -7,6 +7,7 @@ import {Link} from "react-router-dom";
 import {scrollToUp} from "../utils/utils";
 
 const Pagination: React.FC<PaginationProps> = ({totalCount, perPage}) => {
+
     const {currentPage} = useParams();
     const countOfPages = Math.ceil(totalCount / perPage);
     const pages: Array<number> = [];

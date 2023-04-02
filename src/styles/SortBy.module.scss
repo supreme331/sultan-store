@@ -2,6 +2,7 @@
 
 .sort {
   min-width: 284px;
+  height: 24px;
   position: relative;
   display: inline-flex;
   justify-content: space-between;
@@ -59,4 +60,13 @@
 
 .sortListValue:hover {
   background-color: #efefef;
+}
+
+//============================MEDIA============================
+// Max-width 768px
+@media (max-width: $md3+px) {
+  .sort {
+    font-size: 14px;
+    margin-bottom: 37px;
+  }
 }

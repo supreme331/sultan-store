@@ -1,0 +1,36 @@
+@import "index";
+
+.goBack {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  width: 79px;
+}
+
+.goBackImage {
+  @extend .circleMobileBtn;
+  background: rgba(255, 200, 94, 0.3);
+
+  img {
+    max-width: 14px;
+  }
+}
+
+.goBackTitle {
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 120%;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #3F4E65;
+}
+
+
+//============================MEDIA============================
+
+// Max-width 480px
+@media (max-width: $md4+px) {
+  .goBack {
+    display: flex;
+  }
+}

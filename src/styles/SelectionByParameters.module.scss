@@ -1,9 +1,36 @@
+@import "index";
+
+.titleBlock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .title {
   font-weight: 500;
   font-size: 16px;
   line-height: 150%;
   color: #111111;
+}
+
+.showBlock {
+  @extend .circleMobileBtn;
+  display: none;
+  background: rgba(255, 200, 94, 0.3);
+  cursor: pointer;
+
+  img {
+    transform: rotate(90deg);
+    max-width: 14px;
+  }
+}
+
+.hideBlock {
+  @extend .showBlock;
+
+  img {
+    transform: rotate(270deg);
+  }
 }
 
 .setCostBlock {
@@ -47,4 +74,19 @@
 
 .btn {
   display: inline-block;
+}
+
+
+//============================MEDIA============================
+
+
+// Max-width 768px
+@media (max-width: $md3+px) {
+  .showBlock {
+    display: flex;
+  }
+
+  .title {
+    cursor: pointer;
+  }
 }
