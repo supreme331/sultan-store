@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from "../../styles/CareTypesBlock.module.scss";
-
 import {showAllProductsOfType} from "../../store/reducers/CatalogSlice";
 import {useAppDispatch, useAppSelector} from "../../store/hooks/redux";
 import {ETypeOfCare} from "../../store/enums/EProducts";

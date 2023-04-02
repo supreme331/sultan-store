@@ -10,7 +10,9 @@ interface LogoProps {
 }
 
 const Logo: React.FC<LogoProps> = ({shade}) => {
+
     const dispatch = useAppDispatch();
+    
     return (
         <Link onClick={() => dispatch(showAllProducts())} to='/'>
             <img src={shade === 'dark' ? logoDark : logoLight} alt="логотип"/>

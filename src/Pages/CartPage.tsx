@@ -11,9 +11,9 @@ import doubleCheckIcon from '../img/double-check-icon.svg';
 import closeIcon from '../img/close-icon.svg';
 import {clearCart} from "../store/reducers/CartSlice";
 import {scrollToUp} from "../utils/utils";
-import catalogReducer from "../store/reducers/CatalogSlice";
 
 const CartPage = () => {
+
     const cartItems = useAppSelector(state => state.cartReducer.cartItems);
     const totalPrice = useAppSelector(state => state.cartReducer.totalPrice);
     const productItems = useAppSelector(state => state.catalogReducer.productItems);

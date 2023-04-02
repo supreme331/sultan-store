@@ -3,16 +3,14 @@ import styles from "../../../styles/SearchBy.module.scss";
 import Input, {InputTypes} from "../../Input";
 import {useAppDispatch, useAppSelector} from "../../../store/hooks/redux";
 import {IProduct} from "../../../store/models/IProduct";
-import catalogReducer, {
-    addSelectedManufacturer, clearSelectedManufacturer,
+import {
+    addSelectedManufacturer,
+    clearSelectedManufacturer,
     deleteSelectedManufacturer
 } from "../../../store/reducers/CatalogSlice";
 
-const SearchBy: React.FC<SearchByProps> = ({
-                                               title,
+const SearchBy: React.FC<SearchByProps> = ({title, filteringParameter}) => {
 
-                                               filteringParameter
-                                           }) => {
     const dispatch = useAppDispatch();
     const parameterItems: { [index: string]: { itemsCount: number, isChecked: boolean } } = {};
     const selectedManufacturers = useAppSelector(state => state.catalogReducer.selectedManufacturers);

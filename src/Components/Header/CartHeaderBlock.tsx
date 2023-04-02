@@ -4,12 +4,9 @@ import styles from '../../styles/CartHeaderBlock.module.scss';
 import {Link} from "react-router-dom";
 import {useAppSelector} from "../../store/hooks/redux";
 
-// interface CartBlockProps {
-//     cartItemsCount: number;
-//     totalPrice: number;
-// }
 
 const CartHeaderBlock: React.FC = () => {
+
     const totalPrice = useAppSelector(state => state.cartReducer.totalPrice);
     const cartItems = useAppSelector(state => state.cartReducer.cartItems);
 

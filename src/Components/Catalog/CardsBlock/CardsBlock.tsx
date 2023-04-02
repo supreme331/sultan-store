@@ -4,6 +4,7 @@ import ProductCard from "./ProductCard";
 import {IProduct} from "../../../store/models/IProduct";
 import Pagination from "../../Pagination";
 import {useParams} from "react-router";
+import EmptyBlock from "../../EmptyBlock";
 
 const CardsBlock: React.FC<CardsBlockProps> = ({cardItems}) => {
 
@@ -19,23 +20,25 @@ const CardsBlock: React.FC<CardsBlockProps> = ({cardItems}) => {
                     items.push(cardItems[i]);
                 }
             }
-            setItemsToRender(items)
+            setItemsToRender(items);
         }
     }, [currentPage, cardItems])
 
     return (
         <div className={styles.cardsBlock}>
-            <ul className={styles.cardsList}>
+            {
+                itemsToRender.length ? <ul className={styles.cardsList}>
                 {itemsToRender.map(product => <ProductCard key={product.id} product={product}/>)}
             </ul>
-            <Pagination totalCount={cardItems.length} perPage={15}/>
+                    : <EmptyBlock title='Список товаров пуст' />
+            }
+            {itemsToRender.length ? <Pagination totalCount={cardItems.length} perPage={15}/> : null}
         </div>
-
     );
 };
 
 interface CardsBlockProps {
-    cardItems: IProduct[]
+    cardItems: IProduct[];
 }
 
 export default CardsBlock;

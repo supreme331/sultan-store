@@ -3,11 +3,11 @@ import styles from "../../../styles/SelectionByParameters.module.scss";
 import SearchBy from "./SearchBy";
 import Button from "../../Button";
 import deleteIcon from "../../../img/delete-icon.svg";
-import {useAppDispatch, useAppSelector} from "../../../store/hooks/redux";
-import Divider from "../../Divider";
+import {useAppDispatch} from "../../../store/hooks/redux";
 import {clearSelectedManufacturer} from "../../../store/reducers/CatalogSlice";
 
 const SelectionByParameters: React.FC<SelectionByParametersProps> = ({onButtonClick}) => {
+
     const dispatch = useAppDispatch();
     const [minPrice, setMinPrice] = useState<number>(0);
     const [maxPrice, setMaxPrice] = useState<number>(10000);

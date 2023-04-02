@@ -26,7 +26,6 @@ const Pagination: React.FC<PaginationProps> = ({totalCount, perPage}) => {
         if (currentPage && +currentPage < pages[pages.length - 1]) {
             scrollToUp();
             navigate('/catalog/' + (+currentPage + 1));
-
         }
     }
 

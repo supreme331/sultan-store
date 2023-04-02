@@ -1,21 +1,20 @@
 import React from 'react';
-import styles from '../styles/Header.module.scss';
-import geoIcon from '../img/geo-icon.svg';
-import mailIcon from '../img/mail-icon.svg';
-import catalogIcon from '../img/catalog-icon.svg';
-import priceIcon from '../img/price-icon.svg';
-import callUsImg from '../img/call-us.png';
+import styles from '../../styles/Header.module.scss';
+import geoIcon from '../../img/geo-icon.svg';
+import mailIcon from '../../img/mail-icon.svg';
+import catalogIcon from '../../img/catalog-icon.svg';
+import priceIcon from '../../img/price-icon.svg';
+import callUsImg from '../../img/call-us.png';
 import {Link} from "react-router-dom";
-import Button from "./Button";
-import Input, {InputTypes} from "./Input";
-import CartHeaderBlock from "./Cart/CartHeaderBlock";
-import CallUs from "./CallUs";
-import InfoItem from "./InfoItem";
-import Logo from "./Logo";
-import {showAllProducts} from "../store/reducers/CatalogSlice";
-import {useAppDispatch} from "../store/hooks/redux";
-
-
+import Button from "../Button";
+import Input, {InputTypes} from "../Input";
+import CartHeaderBlock from "./CartHeaderBlock";
+import CallUs from "../CallUs";
+import InfoItem from "../InfoItem";
+import Logo from "../Logo";
+import {showAllProducts} from "../../store/reducers/CatalogSlice";
+import {useAppDispatch} from "../../store/hooks/redux";
+import HeaderMenu from './HeaderMenu';
 
 const Header: React.FC = () => {
 
@@ -69,17 +68,6 @@ const Header: React.FC = () => {
             </div>
             <hr/>
         </header>
-    );
-};
-
-const HeaderMenu: React.FC = () => {
-    return (
-        <ul className={styles.header__menu}>
-            <li><Link to='/'>О компании</Link></li>
-            <li><Link to='/'>Доставка и оплата</Link></li>
-            <li><Link to='/'>Возврат</Link></li>
-            <li><Link to='/'>Контакты</Link></li>
-        </ul>
     );
 };
 

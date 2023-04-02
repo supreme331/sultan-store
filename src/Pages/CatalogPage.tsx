@@ -26,6 +26,7 @@ import {fetchProductItems} from "../store/reducers/ActionCreators";
 import Loader from "../Components/Loader";
 
 const CatalogPage: React.FC<CatalogProps> = () => {
+
     const isLoading = useAppSelector(state => state.catalogReducer.isLoading);
     const {currentPage} = useParams();
     const navigate = useNavigate();
@@ -39,7 +40,7 @@ const CatalogPage: React.FC<CatalogProps> = () => {
 
     useEffect(() => {
         dispatch(fetchProductItems());
-    }, [])
+    }, [dispatch])
 
     useEffect(() => {
         setCardItems(productItems);
@@ -49,7 +50,7 @@ const CatalogPage: React.FC<CatalogProps> = () => {
         if (!currentPage) {
             navigate('/catalog/1')
         }
-    }, [currentPage])
+    }, [currentPage, navigate])
 
     useEffect(() => {
         if (currentSubtypeOfCare) {
@@ -86,7 +87,7 @@ const CatalogPage: React.FC<CatalogProps> = () => {
                 dispatch(setCurrentTypeOfCare(ETypeOfCare.giftSets));
             }
         }
-    }, [currentSubtypeOfCare])
+    }, [currentSubtypeOfCare, dispatch])
 
     useEffect(() => {
         if (!currentTypeOfCare && !currentSubtypeOfCare) {
@@ -98,16 +99,17 @@ const CatalogPage: React.FC<CatalogProps> = () => {
         if (currentTypeOfCare && currentSubtypeOfCare) {
             setCardItems(productItems.filter(item => item.subtypeOfCare?.includes(currentSubtypeOfCare)))
         }
-    }, [currentTypeOfCare, currentSubtypeOfCare])
+    }, [currentTypeOfCare, currentSubtypeOfCare, productItems])
 
     useEffect(() => {
         if (sortBy === ESortByVariants.ascendingPrices) {
-
             setCardItems([...cardItems].sort((a, b) => a.price - b.price));
         }
+
         if (sortBy === ESortByVariants.descendingPrices) {
             setCardItems([...cardItems].sort((a, b) => b.price - a.price));
         }
+
         if (sortBy === ESortByVariants.nameAZ) {
             setCardItems([...cardItems].sort((a, b) => {
                 if (a.title > b.title) {
@@ -117,6 +119,7 @@ const CatalogPage: React.FC<CatalogProps> = () => {
                 }
             }));
         }
+
         if (sortBy === ESortByVariants.nameZA) {
             setCardItems([...cardItems].sort((a, b) => {
                 if (a.title < b.title) {
@@ -134,6 +137,7 @@ const CatalogPage: React.FC<CatalogProps> = () => {
         if (selectedManufacturers.length) {
             items = items.filter(item => selectedManufacturers.includes(item.manufacturer));
         }
+
         setCardItems(items);
     }
 

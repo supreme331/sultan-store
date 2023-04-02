@@ -10,16 +10,15 @@ import {
     EHairCare,
     EHandsCare,
     EShaving,
-    ETanning, ETypeOfCare
+    ETanning,
+    ETypeOfCare
 } from "../../../store/enums/EProducts";
 import Divider from "../../Divider";
-import {useAppSelector} from "../../../store/hooks/redux";
 
 const CatalogAside: React.FC<CatalogAsideProps> = ({onFilterApply}) => {
 
-
     return (
-        <div className={styles.aside}>
+        <aside className={styles.aside}>
             <div className={styles.selection}>
                 <SelectionByParameters onButtonClick={onFilterApply} />
             </div>
@@ -38,7 +37,7 @@ const CatalogAside: React.FC<CatalogAsideProps> = ({onFilterApply}) => {
             <AsideSection title={ETypeOfCare.shaving} subTypeOfCareEnum={EShaving}/>
             <Divider widthInPx={238} />
             <AsideSection title={ETypeOfCare.giftSets} subTypeOfCareEnum={EGiftSets}/>
-        </div>
+        </aside>
     )
 }
 

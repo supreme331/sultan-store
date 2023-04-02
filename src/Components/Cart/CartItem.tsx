@@ -52,7 +52,6 @@ const CartItem: React.FC<CartItemProps> = ({productItem}) => {
                     <div onClick={() => onRemoveFromCart()}>
                         <Button icon={deleteIcon} alt='Удалить'/>
                     </div>
-
                 </div>
             </div>
             <Divider />

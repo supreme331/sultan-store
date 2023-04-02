@@ -10,12 +10,11 @@ const AsideSection: React.FC<AsideSectionProps> = ({title, subTypeOfCareEnum}) =
     const dispatch = useAppDispatch();
     const currentTypeOfCare = useAppSelector(state => state.catalogReducer.currentTypeOfCare);
     const currentSubtypeOfCare = useAppSelector(state => state.catalogReducer.currentSubtypeOfCare);
-
     const [isActive, setIsActive] = useState<boolean>(false)
 
     useEffect(() => {
         setIsActive(currentTypeOfCare === title)
-    },[currentTypeOfCare])
+    },[currentTypeOfCare, title])
 
     return (
         <div>

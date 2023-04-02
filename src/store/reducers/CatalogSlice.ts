@@ -66,6 +66,23 @@ export const catalogSlice = createSlice({
         clearSelectedManufacturer: (state: CatalogState) => {
             state.selectedManufacturers = [];
         },
+        addProductItem: (state: CatalogState, action: PayloadAction<IProduct>) => {
+            state.productItems.push(action.payload);
+            const data = JSON.stringify(state.productItems);
+            localStorage.setItem('productItems', data);
+        },
+        editProductItem: (state: CatalogState, action: PayloadAction<IProduct>) => {
+            const index = state.productItems.findIndex(product => product.id === action.payload.id);
+            state.productItems.splice(index, 1, action.payload);
+            const data = JSON.stringify(state.productItems);
+            localStorage.setItem('productItems', data);
+        },
+        deleteProductItem: (state: CatalogState, action: PayloadAction<{productId: number}>) => {
+            const index = state.productItems.findIndex(product => product.id === action.payload.productId);
+            state.productItems.splice(index, 1);
+            const data = JSON.stringify(state.productItems);
+            localStorage.setItem('productItems', data);
+        },
     },
     extraReducers: {
         [fetchProductItems.pending.type]: (state: CatalogState) => {
@@ -93,6 +110,9 @@ export const {
     addSelectedManufacturer,
     deleteSelectedManufacturer,
     clearSelectedManufacturer,
+    addProductItem,
+    editProductItem,
+    deleteProductItem,
 } = catalogSlice.actions;
 
 export default catalogSlice.reducer;

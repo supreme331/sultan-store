@@ -20,7 +20,7 @@ const Input: React.FC<SearchInputProps> = ({
                                                placeholder,
                                                whiteInput = false,
                                                onButtonClick
-}) => {
+                                           }) => {
 
     const [inputValue, setInputValue] = useState<string>('')
 
@@ -37,7 +37,7 @@ const Input: React.FC<SearchInputProps> = ({
                    value={inputValue}
                    onKeyDown={(e) => onKeyDown(e.key)}
                    onChange={(e) => setInputValue(e.target.value)}/>
-                <span onClick={() => onButtonClick(inputValue.toLowerCase())} className={styles.btn}>
+            <span onClick={() => onButtonClick(inputValue.toLowerCase())} className={styles.btn}>
                     <img src={inputType === 'search' ? searchIcon : arrowRightIcon} alt="поиск"/>
                 </span>
         </label>

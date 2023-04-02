@@ -13,12 +13,11 @@ import {useParams} from "react-router";
 import Spoiler from '../Components/Spoiler';
 import {fetchProductItems} from "../store/reducers/ActionCreators";
 import {scrollToUp} from "../utils/utils";
+import EmptyBlock from "../Components/EmptyBlock";
 
-interface ProductPageProps {
 
-}
 
-const ProductPage: React.FC<ProductPageProps> = ({}) => {
+const ProductPage: React.FC = () => {
     const params = useParams();
     const dispatch = useAppDispatch();
     // @ts-ignore
@@ -29,12 +28,12 @@ const ProductPage: React.FC<ProductPageProps> = ({}) => {
         if (!product) {
             dispatch(fetchProductItems());
         }
-    }, [])
+    }, [product, dispatch])
 
     return (
         <PageContainer>
             {
-                product && <>
+                product ? <>
                     <BreadCrumbs
                         productName={product.title}
                         productUrl={'/catalog/' + product.barcode}/>
@@ -79,7 +78,8 @@ const ProductPage: React.FC<ProductPageProps> = ({}) => {
                                     <Divider widthInPx={270}/>
                                     <Spoiler title='Характеристики'>
                                         <div>
-                                            <SpecificationProperty label='Тип ухода:' text={product.typeOfCare.join(', ')}/>
+                                            <SpecificationProperty label='Тип ухода:'
+                                                                   text={product.typeOfCare.join(', ')}/>
                                             {product.subtypeOfCare &&
                                                 <SpecificationProperty label='Назначение:'
                                                                        text={product.subtypeOfCare.join(', ')}/>}
@@ -98,7 +98,7 @@ const ProductPage: React.FC<ProductPageProps> = ({}) => {
                             </div>
                         </div>
                     </div>
-                </>
+                </> : <EmptyBlock title='Товар не найден' />
             }
         </PageContainer>
     );

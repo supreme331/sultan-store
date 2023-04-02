@@ -9,7 +9,13 @@ interface MailBlockProps {
     alt?: string;
 }
 
-const InfoItem: React.FC<MailBlockProps> = ({title, subtitle, purpose, icon, alt}) => {
+const InfoItem: React.FC<MailBlockProps> = ({
+                                                title,
+                                                subtitle,
+                                                purpose,
+                                                icon,
+                                                alt
+                                            }) => {
     return (
         <div className={styles.infoBlock}>
             {icon && alt ? <img src={icon} alt={alt}/> : null}

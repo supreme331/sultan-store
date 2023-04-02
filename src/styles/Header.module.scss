@@ -34,19 +34,6 @@ hr {
 .header {
   &__logo {}
 
-  &__menu {
-    display: flex;
-    justify-content: space-between;
-    height: 29px;
-    max-width: 512px;
-    flex: 1 1 auto;
-    line-height: 150%;
-    color: #3F4E65;
-    a {
-      color: #3F4E65;
-    }
-  }
-
   &__infoBlock {
     display: flex;
     justify-content: space-between;
@@ -72,3 +59,13 @@ hr {
   }
 }
 
+//============================MEDIA============================
+
+
+// Max-width 480px
+@media (max-width: $md5+px) {
+  .container {
+    width: 280px;
+
+  }
+}

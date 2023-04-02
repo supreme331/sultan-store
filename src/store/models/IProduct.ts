@@ -22,7 +22,7 @@ export interface IProduct {
     description: string;
     price: number;
     typeOfCare: Array<'' | ETypeOfCare>;
-    subtypeOfCare?: Array<''
+    subtypeOfCare: Array<''
         | EBodyCare
         | EHandsCare
         | EFootCare
