@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/sultan-store/static/css/main.b5dfa83e.css",
-    "main.js": "/sultan-store/static/js/main.14a30e47.js",
+    "main.css": "/sultan-store/static/css/main.192af9d7.css",
+    "main.js": "/sultan-store/static/js/main.097ebc41.js",
     "static/media/Inter-ExtraBold.woff": "/sultan-store/static/media/Inter-ExtraBold.ae3b2988bb63a63f7149.woff",
     "static/media/Inter-Bold.woff": "/sultan-store/static/media/Inter-Bold.7d2591a41b1c0177c519.woff",
     "static/media/Inter-SemiBold.woff": "/sultan-store/static/media/Inter-SemiBold.7e9928054250d785079b.woff",
@@ -30,23 +30,29 @@
     "static/media/close-icon.svg": "/sultan-store/static/media/close-icon.89b5267c6ed8636e6746a8d636ed5855.svg",
     "static/media/mail-icon.svg": "/sultan-store/static/media/mail-icon.3340915fd443967adca6bd4a1fe514ba.svg",
     "static/media/bottle.svg": "/sultan-store/static/media/bottle.8954951c94a03caba659a0160febe828.svg",
+    "static/media/phone-filled-icon.svg": "/sultan-store/static/media/phone-filled-icon.4fdc816fceed208c6b26f9df541b1555.svg",
     "static/media/box-open.svg": "/sultan-store/static/media/box-open.25359892898a0e3cc992765a8a11383a.svg",
     "static/media/telegram-icon.svg": "/sultan-store/static/media/telegram-icon.dad5145d6a24aab29b43b405033ca7fe.svg",
+    "static/media/phone-icon.svg": "/sultan-store/static/media/phone-icon.e74ed3e8a20e93f90d9ea5afd4f2e047.svg",
     "static/media/geo-icon.svg": "/sultan-store/static/media/geo-icon.ac8d5a925aa65f28f8c1f78a97674963.svg",
+    "static/media/catalog-black-icon.svg": "/sultan-store/static/media/catalog-black-icon.1928cbd9b07950bf3fa58978c02fd5d0.svg",
     "static/media/catalog-icon.svg": "/sultan-store/static/media/catalog-icon.4756189f8fb2f4cdf0b38c581c7033d8.svg",
     "index.html": "/sultan-store/index.html",
+    "static/media/search-black-icon.svg": "/sultan-store/static/media/search-black-icon.2e7579ec4d7e4d74ea02293861076152.svg",
     "static/media/search-icon.svg": "/sultan-store/static/media/search-icon.dc220b85ec983988f6f2629d99ba20b8.svg",
     "static/media/double-check-icon.svg": "/sultan-store/static/media/double-check-icon.37f3bc180890ba89fe771c62d8d15901.svg",
+    "static/media/menu-close-icon.svg": "/sultan-store/static/media/menu-close-icon.c19f573b2af452b55dcb93f02879ca3a.svg",
+    "static/media/menu-open-icon.svg": "/sultan-store/static/media/menu-open-icon.0480c82a6509521d232591c92c310877.svg",
     "static/media/price-dark-icon.svg": "/sultan-store/static/media/price-dark-icon.11d3238f37bdb4da06fd293c2ccf77e4.svg",
     "static/media/price-icon.svg": "/sultan-store/static/media/price-icon.5e96ff0389bda2c469106116f0a58afd.svg",
     "static/media/prev-icon.svg": "/sultan-store/static/media/prev-icon.8009929457bde0328f8f182170fd2c0f.svg",
     "static/media/next-icon.svg": "/sultan-store/static/media/next-icon.93ba4abe5846a231d455ec0417dd0a4b.svg",
     "static/media/arrow-right.svg": "/sultan-store/static/media/arrow-right.35ab94e2f8817f324bd31c2293385fa8.svg",
-    "main.b5dfa83e.css.map": "/sultan-store/static/css/main.b5dfa83e.css.map",
-    "main.14a30e47.js.map": "/sultan-store/static/js/main.14a30e47.js.map"
+    "main.192af9d7.css.map": "/sultan-store/static/css/main.192af9d7.css.map",
+    "main.097ebc41.js.map": "/sultan-store/static/js/main.097ebc41.js.map"
   },
   "entrypoints": [
-    "static/css/main.b5dfa83e.css",
-    "static/js/main.14a30e47.js"
+    "static/css/main.192af9d7.css",
+    "static/js/main.097ebc41.js"
   ]
 }
