@@ -55,14 +55,17 @@ export const catalogSlice = createSlice({
             | EShaving
             | EGiftSets>) => {
             state.currentSubtypeOfCare = action.payload;
+            state.selectedManufacturers = [];
         },
         showAllProducts: (state: CatalogState) => {
             state.currentTypeOfCare = '';
             state.currentSubtypeOfCare = '';
+            state.selectedManufacturers = [];
         },
         showAllProductsOfType: (state: CatalogState, action: PayloadAction<'' | ETypeOfCare>) => {
             state.currentTypeOfCare = action.payload;
             state.currentSubtypeOfCare = '';
+            state.selectedManufacturers = [];
         },
         addSelectedManufacturer: (state: CatalogState, action: PayloadAction<string>) => {
             state.selectedManufacturers.push(action.payload)
