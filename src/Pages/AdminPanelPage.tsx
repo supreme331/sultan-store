@@ -43,7 +43,11 @@ const AdminPanelPage = () => {
     }
 
     function deleteSelectedProducts() {
-        selectedProductsId.forEach(id => dispatch(deleteProductItem({productId: id})));
+        const answer = window.confirm('Вы уверены что хотите удалить товар(ы) из списка?');
+
+        if (answer) {
+            selectedProductsId.forEach(id => dispatch(deleteProductItem({productId: id})));
+        }
     }
 
     useEffect(() => {

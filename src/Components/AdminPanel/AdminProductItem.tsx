@@ -11,6 +11,14 @@ const AdminProductItem: React.FC<AdminProductItemProps> = ({product, editProduct
 
     const dispatch = useAppDispatch();
 
+    function deleteProduct() {
+        const answer = window.confirm('Вы уверены что хотите удалить товар из списка?');
+
+        if (answer) {
+            dispatch(deleteProductItem({productId: product.id}))
+        }
+    }
+
     return (
         <div className={styles.productListItem}>
             <div className={styles.productListItem__checkbox}>
@@ -31,7 +39,7 @@ const AdminProductItem: React.FC<AdminProductItemProps> = ({product, editProduct
                 <div onClick={() => editProduct(product.id)}>
                     <img src={editIcon} alt="изменить"/>
                 </div>
-                <div onClick={() => dispatch(deleteProductItem({productId: product.id}))}>
+                <div onClick={() => deleteProduct()}>
                     <img src={removeIcon} alt="удалить"/>
                 </div>
             </div>
