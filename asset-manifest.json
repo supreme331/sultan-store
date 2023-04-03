@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/sultan-store/static/css/main.b3a4fae7.css",
-    "main.js": "/sultan-store/static/js/main.3a180a88.js",
+    "main.js": "/sultan-store/static/js/main.c637bf7d.js",
     "static/media/Inter-ExtraBold.woff": "/sultan-store/static/media/Inter-ExtraBold.ae3b2988bb63a63f7149.woff",
     "static/media/Inter-Bold.woff": "/sultan-store/static/media/Inter-Bold.7d2591a41b1c0177c519.woff",
     "static/media/Inter-SemiBold.woff": "/sultan-store/static/media/Inter-SemiBold.7e9928054250d785079b.woff",
@@ -49,10 +49,10 @@
     "static/media/next-icon.svg": "/sultan-store/static/media/next-icon.93ba4abe5846a231d455ec0417dd0a4b.svg",
     "static/media/arrow-right.svg": "/sultan-store/static/media/arrow-right.35ab94e2f8817f324bd31c2293385fa8.svg",
     "main.b3a4fae7.css.map": "/sultan-store/static/css/main.b3a4fae7.css.map",
-    "main.3a180a88.js.map": "/sultan-store/static/js/main.3a180a88.js.map"
+    "main.c637bf7d.js.map": "/sultan-store/static/js/main.c637bf7d.js.map"
   },
   "entrypoints": [
     "static/css/main.b3a4fae7.css",
-    "static/js/main.3a180a88.js"
+    "static/js/main.c637bf7d.js"
   ]
 }
