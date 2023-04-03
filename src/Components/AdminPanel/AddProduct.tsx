@@ -101,7 +101,7 @@ const AddProduct: React.FC<AddProductProps> = ({editingProduct, finishEditing}) 
         setTypesOfCare(types);
 
         if (subtypeValue) {
-            console.log(subtypeValue)
+
             const subtypeValueIndex = subtypesOfCare.findIndex(type => type === subtypeValue);
             const subtypes = subtypesOfCare;
 
@@ -157,7 +157,6 @@ const AddProduct: React.FC<AddProductProps> = ({editingProduct, finishEditing}) 
 
         // Добавление типов и подтипов ухода при отметке чекбокса
         if (isChecked) {
-            console.log('check')
             // @ts-ignore
             if (Object.values(EBodyCare).includes(subtypeValue)) {
                 addTypesAndSubtypesValues(ETypeOfCare.body, subtypeValue);
@@ -194,7 +193,6 @@ const AddProduct: React.FC<AddProductProps> = ({editingProduct, finishEditing}) 
 
         // Удаление типов и подтипов ухода при снятии отметки чекбокса
         if (!isChecked) {
-            console.log('uncheck')
             // @ts-ignore
             if (Object.values(EBodyCare).includes(subtypeValue)) {
                 removeTypesAndSubtypesValues(ETypeOfCare.body, subtypeValue);

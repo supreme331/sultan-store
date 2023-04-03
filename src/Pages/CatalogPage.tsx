@@ -54,6 +54,11 @@ const CatalogPage: React.FC<CatalogProps> = () => {
     }, [currentPage, navigate])
 
     useEffect(() => {
+        // Сортировка товаров по умолчанию, при загрузке компонента
+        setCardItems([...cardItems].sort((a, b) => a.price - b.price));
+    }, [])
+
+    useEffect(() => {
         if (currentSubtypeOfCare) {
             // @ts-ignore
             if (Object.values(EBodyCare).includes(currentSubtypeOfCare)) {
@@ -130,7 +135,7 @@ const CatalogPage: React.FC<CatalogProps> = () => {
                 }
             }));
         }
-    }, [sortBy])
+    }, [sortBy, cardItems])
 
     function onFilterApply(minPrice: number, maxPrice: number) {
         let items = productItems.filter(item => item.price > minPrice && item.price < maxPrice)
