@@ -97,6 +97,7 @@ const CatalogPage: React.FC<CatalogProps> = () => {
     // Изменение списка товаров в зависимости от установленных типов и подтивов ухода
     useEffect(() => {
         const items = setDefaultProductsSort(productItems);
+        setSortBy(ESortByVariants.ascendingPrices);
         if (!currentTypeOfCare && !currentSubtypeOfCare) {
             setCardItems(items);
         }
@@ -166,7 +167,7 @@ const CatalogPage: React.FC<CatalogProps> = () => {
                     </div>
                 </div>
                 <div className={styles.careTypesBlock}>
-                    <CareTypesBlock/>
+                    <CareTypesBlock />
                 </div>
                 <main className={styles.main}>
                     <CatalogAside onFilterApply={onFilterApply} sortBy={sortBy} onChangeSort={onChangeSort}/>
