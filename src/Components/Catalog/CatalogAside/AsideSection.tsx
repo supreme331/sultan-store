@@ -4,14 +4,16 @@ import {useAppDispatch, useAppSelector} from "../../../store/hooks/redux";
 import {setCurrentSubtypeOfCare, showAllProductsOfType} from "../../../store/reducers/CatalogSlice";
 import {ETypeOfCare} from "../../../store/enums/EProducts";
 import {useNavigate} from "react-router";
+import {getCurrentTypeOfCare} from "../../../store/reducers/selectors/getCurrentTypeOfCare";
+import {getCurrentSubtypeOfCare} from "../../../store/reducers/selectors/getCurrentSubtypeOfCare";
 
 
 const AsideSection: React.FC<AsideSectionProps> = ({title, subTypeOfCareEnum}) => {
 
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
-    const currentTypeOfCare = useAppSelector(state => state.catalogReducer.currentTypeOfCare);
-    const currentSubtypeOfCare = useAppSelector(state => state.catalogReducer.currentSubtypeOfCare);
+    const currentTypeOfCare = useAppSelector(getCurrentTypeOfCare);
+    const currentSubtypeOfCare = useAppSelector(getCurrentSubtypeOfCare);
     const [isActive, setIsActive] = useState<boolean>(false)
 
     useEffect(() => {

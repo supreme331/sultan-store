@@ -3,7 +3,7 @@ import styles from '../styles/Loader.module.scss';
 
 const Loader = () => {
     return (
-        <div className={styles.loaderWrapper}>
+        <div data-testid='loader' className={styles.loaderWrapper}>
             <span  className={styles.loader}></span>
         </div>
     );

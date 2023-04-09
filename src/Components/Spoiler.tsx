@@ -7,7 +7,7 @@ const Spoiler: React.FC<SpoilerProps> = ({title, children}) => {
 
     return (
         <div>
-            <h2 onClick={() => setIsOpen(!isOpen)} className={styles.spoilerTitle}>
+            <h2 data-testid='title' onClick={() => setIsOpen(!isOpen)} className={styles.spoilerTitle}>
                 {title}
                 <div className={styles.spoilerTriangle}>
                     <span className={isOpen ? styles.spoilerTriangleUp : styles.spoilerTriangleDown}></span>

@@ -4,12 +4,13 @@ import {showAllProductsOfType} from "../../store/reducers/CatalogSlice";
 import {useAppDispatch, useAppSelector} from "../../store/hooks/redux";
 import {ETypeOfCare} from "../../store/enums/EProducts";
 import {useNavigate} from "react-router";
+import {getCurrentTypeOfCare} from "../../store/reducers/selectors/getCurrentTypeOfCare";
 
 const CareTypesBlock = () => {
 
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
-    const currentTypeOfCare = useAppSelector(state => state.catalogReducer.currentTypeOfCare);
+    const currentTypeOfCare = useAppSelector(getCurrentTypeOfCare);
 
     function onChangeTypeOfCare(value: ETypeOfCare) {
         dispatch(showAllProductsOfType(value));
@@ -22,6 +23,7 @@ const CareTypesBlock = () => {
                 Object.values(ETypeOfCare)
                     .map((value) =>
                         <li key={value}
+                            data-testid={value}
                             className={currentTypeOfCare === value
                                 ? styles.typeOfCareActiveItem
                                 : styles.typeOfCareItem}

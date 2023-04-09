@@ -14,23 +14,30 @@ const SortBy: React.FC<SortByProps> = ({sortBy, onChangeSort}) => {
     return (
         <div className={styles.sort}>
             <div className={styles.title}>Сортировка:</div>
-            <div onClick={() => setIsSortListOpen(!isSortListOpen)} className={styles.sortValue}>
+            <div data-testid='toggleListOpen'
+                 onClick={() => setIsSortListOpen(!isSortListOpen)}
+                 className={styles.sortValue}>
                 <span>{sortBy}</span>
                 <div className={styles.sortTriangle}>
                     <span className={isSortListOpen ? styles.sortTriangleUp : styles.sortTriangleDown}></span>
                 </div>
             </div>
             <ul className={isSortListOpen ? styles.sortList : styles.sortListHidden}>
-                <li onClick={() => setSortingValue(ESortByVariants.ascendingPrices)} className={styles.sortListValue}>
+                <li onClick={() => setSortingValue(ESortByVariants.ascendingPrices)}
+                    className={styles.sortListValue}>
                     {ESortByVariants.ascendingPrices}
                 </li>
-                <li onClick={() => setSortingValue(ESortByVariants.descendingPrices)} className={styles.sortListValue}>
+                <li data-testid='descendingPrices'
+                    onClick={() => setSortingValue(ESortByVariants.descendingPrices)}
+                    className={styles.sortListValue}>
                     {ESortByVariants.descendingPrices}
                 </li>
-                <li onClick={() => setSortingValue(ESortByVariants.nameAZ)} className={styles.sortListValue}>
+                <li onClick={() => setSortingValue(ESortByVariants.nameAZ)}
+                    className={styles.sortListValue}>
                     {ESortByVariants.nameAZ}
                 </li>
-                <li onClick={() => setSortingValue(ESortByVariants.nameZA)} className={styles.sortListValue}>
+                <li onClick={() => setSortingValue(ESortByVariants.nameZA)}
+                    className={styles.sortListValue}>
                     {ESortByVariants.nameZA}
                 </li>
             </ul>

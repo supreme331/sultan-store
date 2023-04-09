@@ -71,3 +71,10 @@
     align-items: flex-start;
   }
 }
+
+// Max-width 480px
+@media (max-width: $md4+px) {
+  .content {
+    width: 280px;
+  }
+}

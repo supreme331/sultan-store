@@ -1,19 +1,17 @@
 import React, {useEffect} from 'react';
 import './styles/App.module.scss';
 import styles from './styles/App.module.scss';
-import {useAppDispatch} from './store/hooks/redux';
-import CatalogPage from "./Pages/CatalogPage";
+import {useAppDispatch, useAppSelector} from './store/hooks/redux';
 import Header from "./Components/Header/Header";
-import {Route, Routes} from 'react-router-dom';
-import ProductPage from "./Pages/ProductPage";
-import Footer from "./Components/Footer";
-import CartPage from "./Pages/CartPage";
+import Footer from "./Components/Footer/Footer";
 import {initializeApp} from "./store/reducers/CatalogSlice";
-import AdminPanelPage from "./Pages/AdminPanelPage";
+import Loader from "./Components/Loader";
+import {getIsInitialization} from "./store/reducers/selectors/getIsInitialization";
+import AppRouter from "./Components/AppRouter";
 
 function App() {
-
     const dispatch = useAppDispatch();
+    const isInitialization = useAppSelector(getIsInitialization);
 
     useEffect(() => {
         dispatch(initializeApp());
@@ -21,15 +19,15 @@ function App() {
 
     return (
         <div className={styles.App}>
-            <Header/>
-            <Routes>
-                <Route path='/' element={<CatalogPage/>}/>
-                <Route path='/catalog/:currentPage' element={<CatalogPage/>}/>
-                <Route path='/products/:id' element={<ProductPage/>}/>
-                <Route path='/cart' element={<CartPage/>}/>
-                <Route path='/app-admin' element={<AdminPanelPage/>}/>
-            </Routes>
-            <Footer/>
+            {
+                isInitialization ? <Loader/>
+                    : (
+                        <>
+                            <Header/>
+                            <AppRouter/>
+                            <Footer/>
+                        </>
+                    )}
         </div>
     );
 }

@@ -23,20 +23,23 @@ import {ESortByVariants} from "../store/enums/ECatalog";
 import {IProduct} from "../store/models/IProduct";
 import {useNavigate, useParams} from "react-router";
 import {fetchProductItems} from "../store/reducers/ActionCreators";
-import Loader from "../Components/Loader";
 import GoBackButton from "../Components/GoBackButton";
+import {getProductItems} from "../store/reducers/selectors/getProductItems";
+import {getCurrentSubtypeOfCare} from "../store/reducers/selectors/getCurrentSubtypeOfCare";
+import {getCurrentTypeOfCare} from "../store/reducers/selectors/getCurrentTypeOfCare";
+import {getSelectedManufacturers} from "../store/reducers/selectors/getSelectedManufacturers";
+import {setDefaultProductsSort} from "../utils/utils";
 
 const CatalogPage: React.FC<CatalogProps> = () => {
 
-    const isLoading = useAppSelector(state => state.catalogReducer.isLoading);
     const {currentPage} = useParams();
     const navigate = useNavigate();
-    const productItems = useAppSelector(state => state.catalogReducer.productItems);
-    const currentSubtypeOfCare = useAppSelector(state => state.catalogReducer.currentSubtypeOfCare);
-    const currentTypeOfCare = useAppSelector(state => state.catalogReducer.currentTypeOfCare);
-    const selectedManufacturers = useAppSelector(state => state.catalogReducer.selectedManufacturers);
+    const productItems = useAppSelector(getProductItems);
+    const currentSubtypeOfCare = useAppSelector(getCurrentSubtypeOfCare);
+    const currentTypeOfCare = useAppSelector(getCurrentTypeOfCare);
+    const selectedManufacturers = useAppSelector(getSelectedManufacturers);
     const dispatch = useAppDispatch();
-    const [cardItems, setCardItems] = useState<IProduct[]>(productItems);
+    const [cardItems, setCardItems] = useState<IProduct[]>(setDefaultProductsSort(productItems));
     const [sortBy, setSortBy] = useState<ESortByVariants>(ESortByVariants.ascendingPrices);
 
     useEffect(() => {
@@ -44,7 +47,7 @@ const CatalogPage: React.FC<CatalogProps> = () => {
     }, [dispatch])
 
     useEffect(() => {
-        setCardItems(productItems);
+        setCardItems(setDefaultProductsSort(productItems));
     }, [productItems])
 
     useEffect(() => {
@@ -54,11 +57,7 @@ const CatalogPage: React.FC<CatalogProps> = () => {
     }, [currentPage, navigate])
 
     useEffect(() => {
-        // Сортировка товаров по умолчанию, при загрузке компонента
-        setCardItems([...cardItems].sort((a, b) => a.price - b.price));
-    }, [])
-
-    useEffect(() => {
+        // Установка типа ухода при смене подтипа ухода
         if (currentSubtypeOfCare) {
             // @ts-ignore
             if (Object.values(EBodyCare).includes(currentSubtypeOfCare)) {
@@ -95,18 +94,21 @@ const CatalogPage: React.FC<CatalogProps> = () => {
         }
     }, [currentSubtypeOfCare, dispatch])
 
+    // Изменение списка товаров в зависимости от установленных типов и подтивов ухода
     useEffect(() => {
+        const items = setDefaultProductsSort(productItems);
         if (!currentTypeOfCare && !currentSubtypeOfCare) {
-            setCardItems(productItems);
+            setCardItems(items);
         }
         if (currentTypeOfCare && !currentSubtypeOfCare) {
-            setCardItems(productItems.filter(item => item.typeOfCare.includes(currentTypeOfCare)));
+            setCardItems(items.filter(item => item.typeOfCare.includes(currentTypeOfCare)));
         }
         if (currentTypeOfCare && currentSubtypeOfCare) {
-            setCardItems(productItems.filter(item => item.subtypeOfCare?.includes(currentSubtypeOfCare)))
+            setCardItems(items.filter(item => item.subtypeOfCare?.includes(currentSubtypeOfCare)))
         }
     }, [currentTypeOfCare, currentSubtypeOfCare, productItems])
 
+    // Сортировка товаров по цене/названию
     useEffect(() => {
         if (sortBy === ESortByVariants.ascendingPrices) {
             setCardItems([...cardItems].sort((a, b) => a.price - b.price));
@@ -135,8 +137,9 @@ const CatalogPage: React.FC<CatalogProps> = () => {
                 }
             }));
         }
-    }, [sortBy, cardItems])
+    }, [sortBy])
 
+    // Фильтрация подбора по параметрам
     function onFilterApply(minPrice: number, maxPrice: number) {
         let items = productItems.filter(item => item.price > minPrice && item.price < maxPrice)
 
@@ -167,7 +170,7 @@ const CatalogPage: React.FC<CatalogProps> = () => {
                 </div>
                 <main className={styles.main}>
                     <CatalogAside onFilterApply={onFilterApply} sortBy={sortBy} onChangeSort={onChangeSort}/>
-                    {isLoading ? <Loader /> : <CardsBlock cardItems={cardItems}/>}
+                    <CardsBlock cardItems={cardItems}/>
                 </main>
             </div>
         </PageContainer>

@@ -69,24 +69,11 @@
   font-size: 16px;
 }
 
-.aboutTextMobile {
-  margin-bottom: 15px;
-  font-size: 12px;
-  line-height: 150%;
-  color: #FFFFFF;
-}
-
 .contactsMobile {
   display: flex;
   width: 100%;
   justify-content: space-between;
   align-items: center;
-}
-
-.subscribeText {
-  font-size: 12px;
-  margin-bottom: 15px;
-  display: block;
 }
 
 .subtitle {
@@ -181,6 +168,13 @@
 
   .footerMobile {
     display: block;
+  }
+
+  .aboutText {
+    margin-bottom: 0;
+    font-size: 12px;
+    line-height: 150%;
+    color: #FFFFFF;
   }
 }
 

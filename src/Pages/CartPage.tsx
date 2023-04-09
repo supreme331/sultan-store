@@ -12,12 +12,15 @@ import closeIcon from '../img/close-icon.svg';
 import {clearCart} from "../store/reducers/CartSlice";
 import {scrollToUp} from "../utils/utils";
 import GoBackButton from "../Components/GoBackButton";
+import {getCartItems} from "../store/reducers/selectors/getCartItems";
+import {getTotalPrice} from "../store/reducers/selectors/getTotalPrice";
+import {getProductItems} from "../store/reducers/selectors/getProductItems";
 
 const CartPage = () => {
 
-    const cartItems = useAppSelector(state => state.cartReducer.cartItems);
-    const totalPrice = useAppSelector(state => state.cartReducer.totalPrice);
-    const productItems = useAppSelector(state => state.catalogReducer.productItems);
+    const cartItems = useAppSelector(getCartItems);
+    const totalPrice = useAppSelector(getTotalPrice);
+    const productItems = useAppSelector(getProductItems);
     const items: IProduct[] = [];
     const dispatch = useAppDispatch();
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -26,9 +29,11 @@ const CartPage = () => {
         scrollToUp();
     }, [])
 
-    for (let i = 0; i < cartItems.length; i++) {
-        const product = productItems.find(product => product.id === cartItems[i].id);
-        product && items.push(product);
+    if (cartItems) {
+        for (let i = 0; i < cartItems.length; i++) {
+            const product = productItems.find(product => product.id === cartItems[i].id);
+            product && items.push(product);
+        }
     }
 
     function onPlaceOrder() {
@@ -41,21 +46,22 @@ const CartPage = () => {
     return (
         <PageContainer>
             <BreadCrumbs catalogName='Корзина' catalogUrl='/cart'/>
-            <GoBackButton redirectTo='/catalog/' />
+            <GoBackButton redirectTo='/catalog/'/>
             <div className={styles.content}>
                 <div className={styles.head}>
                     <h1 className={styles.title}>Корзина</h1>
                 </div>
                 <Divider/>
-                {items.length
-                    ? <CartItems items={items}/>
-                    : <div className={styles.emptyCart}>
-                        <div>Корзина пуста</div>
-                        <Divider/>
-                    </div>}
-
+                {
+                    items.length
+                        ? <CartItems items={items}/>
+                        : <div className={styles.emptyCart}>
+                            <div>Корзина пуста</div>
+                            <Divider/>
+                        </div>
+                }
                 <div className={styles.footer}>
-                    <div  className={styles.placeOrderBtn} onClick={onPlaceOrder}>
+                    <div className={styles.placeOrderBtn} onClick={onPlaceOrder}>
                         <Button text='Оформить заказ'/>
                     </div>
                     <div className={styles.totalPrice}>{totalPrice}<span> ₽</span></div>

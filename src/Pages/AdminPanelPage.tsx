@@ -8,11 +8,12 @@ import {useAppDispatch, useAppSelector} from "../store/hooks/redux";
 import {fetchProductItems} from "../store/reducers/ActionCreators";
 import {IProduct} from "../store/models/IProduct";
 import {deleteProductItem} from "../store/reducers/CatalogSlice";
+import {getProductItems} from "../store/reducers/selectors/getProductItems";
 
 const AdminPanelPage = () => {
 
     const dispatch = useAppDispatch();
-    const productItems = useAppSelector(state => state.catalogReducer.productItems);
+    const productItems = useAppSelector(getProductItems);
     const [activeBlock, setActiveBlock] = useState<'addProduct' | 'productsList' | 'editProduct'>('productsList');
     const [editingProductId, setEditingProductId] = useState<number | null>(null);
     const [editingProduct, setEditingProduct] = useState<IProduct | null>(null);

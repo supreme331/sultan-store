@@ -53,6 +53,7 @@
 // Max-width 768px
 @media (max-width: $md3+px) {
   .typeOfCare {
+    width: 468px;
     flex-direction: column;
     align-items: flex-start;
     margin-bottom: 25px;
@@ -64,3 +65,11 @@
     margin-bottom: 10px;
   }
 }
+// Max-width 480px
+@media (max-width: $md3+px) {
+  .typeOfCare {
+    width: 280px;
+  }
+}
+
+

@@ -14,14 +14,19 @@
   }
 }
 
-.menuMobile {
-  margin: 20px auto;
+.menuMobileContainer {
+  width: 100%;
+  position: absolute;
+  top: 190px;
+  background: #FFFFFF;
+  z-index: 15;
+  font-family: 'Inter', sans-serif;
 }
 
-.menuMobileContainer {
+.menuMobile {
   width: 280px;
-  font-family: 'Inter', sans-serif;
   margin: 0 auto;
+  padding: 20px;
 }
 
 .infoElemMobile {
@@ -83,6 +88,10 @@
     max-width: 330px;
     height: 58px;
     justify-content: flex-start;
+  }
+  .menuListMobile {
+    max-width: 100%;
+    height: auto;
   }
 
   .menuListItem {

@@ -5,9 +5,13 @@ import {IProduct} from "../../../store/models/IProduct";
 import Pagination from "../../Pagination";
 import {useParams} from "react-router";
 import EmptyBlock from "../../EmptyBlock";
+import {useAppSelector} from "../../../store/hooks/redux";
+import {getIsLoading} from "../../../store/reducers/selectors/getIsLoading";
+import Loader from "../../Loader";
 
 const CardsBlock: React.FC<CardsBlockProps> = ({cardItems}) => {
 
+    const isLoading = useAppSelector(getIsLoading);
     const {currentPage} = useParams();
     const [itemsToRender, setItemsToRender] = useState<IProduct[]>([]);
 
@@ -27,12 +31,19 @@ const CardsBlock: React.FC<CardsBlockProps> = ({cardItems}) => {
     return (
         <div className={styles.cardsBlock}>
             {
-                itemsToRender.length ? <ul className={styles.cardsList}>
-                {itemsToRender.map(product => <ProductCard key={product.id} product={product}/>)}
-            </ul>
-                    : <EmptyBlock title='Список товаров пуст' />
+                isLoading && !itemsToRender.length && <Loader />
             }
-            {itemsToRender.length ? <Pagination totalCount={cardItems.length} perPage={15}/> : null}
+            {
+                itemsToRender.length ? <ul className={styles.cardsList}>
+                    {itemsToRender.map(product => <ProductCard key={product.id} product={product}/>)}
+                </ul> : null
+            }
+            {
+                !isLoading && !itemsToRender.length && <EmptyBlock title='Список товаров пуст'/>
+            }
+            {
+                itemsToRender.length ? <Pagination totalCount={cardItems.length} perPage={15}/> : null
+            }
         </div>
     );
 };

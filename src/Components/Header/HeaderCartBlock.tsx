@@ -3,19 +3,21 @@ import cartIcon from "../../img/cart-icon.svg";
 import styles from '../../styles/CartHeaderBlock.module.scss';
 import {Link} from "react-router-dom";
 import {useAppSelector} from "../../store/hooks/redux";
+import {getTotalPrice} from "../../store/reducers/selectors/getTotalPrice";
+import {getCartItems} from "../../store/reducers/selectors/getCartItems";
 
 
-const CartHeaderBlock: React.FC<CartHeaderBlockProps> = ({isMobile = false}) => {
+const HeaderCartBlock: React.FC<CartHeaderBlockProps> = ({isMobile = false}) => {
 
-    const totalPrice = useAppSelector(state => state.cartReducer.totalPrice);
-    const cartItems = useAppSelector(state => state.cartReducer.cartItems);
+    const totalPrice = useAppSelector(getTotalPrice);
+    const cartItems = useAppSelector(getCartItems);
 
     return (
         <Link to='/cart' className={styles.cartBlock}>
             <div className={isMobile ? styles.cartBlock__iconMobile : styles.cartBlock__icon}>
                 <img src={cartIcon} alt="корзина"/>
                 {
-                    cartItems.length
+                    cartItems?.length
                         ? <span className={styles.cartBlock__itemsCount}>{cartItems.length}</span>
                         : null
                 }
@@ -34,4 +36,4 @@ interface CartHeaderBlockProps {
     isMobile?: boolean;
 }
 
-export default CartHeaderBlock;
+export default HeaderCartBlock;

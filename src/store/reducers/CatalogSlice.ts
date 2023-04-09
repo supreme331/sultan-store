@@ -13,12 +13,14 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {IProduct} from "../models/IProduct";
 import {initialProducts} from "../initialProducts";
 import {fetchProductItems} from "./ActionCreators";
+import {setDefaultProductsSort} from "../../utils/utils";
 
-interface CatalogState {
+export interface CatalogState {
     productItems: IProduct[];
     selectedManufacturers: Array<string>;
     currentTypeOfCare: '' | ETypeOfCare;
     currentSubtypeOfCare: '' | EBodyCare | EHandsCare | EFootCare | EFaceCare | EHairCare | ETanning | EShaving | EGiftSets;
+    isInitialization: boolean;
     isLoading: boolean;
     error: string;
 }
@@ -28,6 +30,7 @@ const initialState: CatalogState = {
     selectedManufacturers: [],
     currentTypeOfCare: '',
     currentSubtypeOfCare: '',
+    isInitialization: true,
     isLoading: true,
     error: '',
 }
@@ -37,10 +40,10 @@ export const catalogSlice = createSlice({
     initialState,
     reducers: {
         initializeApp: (state: CatalogState) => {
-            state.isLoading = true;
+            state.isInitialization = true;
             const data = JSON.stringify(initialProducts);
             localStorage.setItem('productItems', data);
-            state.isLoading = false;
+            state.isInitialization = false;
         },
         setCurrentTypeOfCare: (state: CatalogState, action: PayloadAction<'' | ETypeOfCare>) => {
             state.currentTypeOfCare = action.payload;

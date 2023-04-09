@@ -8,12 +8,13 @@ import deleteIcon from "../../img/delete-icon.svg";
 import Divider from "../Divider";
 import {useAppDispatch, useAppSelector} from "../../store/hooks/redux";
 import {decreaseAmount, increaseAmount, removeFromCart} from "../../store/reducers/CartSlice";
+import {getCartItems} from "../../store/reducers/selectors/getCartItems";
 
 const CartItem: React.FC<CartItemProps> = ({productItem}) => {
 
     const dispatch = useAppDispatch();
-    const cartItems = useAppSelector(state => state.cartReducer.cartItems);
-    const cartItem = cartItems.find(item => item.id === productItem.id);
+    const cartItems = useAppSelector(getCartItems);
+    const cartItem = cartItems?.find(item => item.id === productItem.id);
 
     function onRemoveFromCart() {
         dispatch(removeFromCart({id: productItem.id}))

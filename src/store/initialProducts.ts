@@ -8,8 +8,9 @@ import {
     ETanning,
     ETypeOfCare
 } from "./enums/EProducts";
+import {IProduct} from "./models/IProduct";
 
-export const initialProducts = [
+export const initialProducts: IProduct[] = [
     {
         id: 4670008496752,
         url: 'https://basket-03.wb.ru/vol366/part36623/36623682/images/big/1.jpg',
@@ -529,6 +530,7 @@ export const initialProducts = [
         typeOfSize: 'weight',
         size: '87',
         typeOfCare: [ETypeOfCare.oralHygiene],
+        subtypeOfCare: [],
     }, {
         id: 6900000022016,
         url: 'https://basket-10.wb.ru/vol1480/part148081/148081835/images/big/1.jpg',
@@ -541,6 +543,7 @@ export const initialProducts = [
         typeOfSize: 'weight',
         size: '250',
         typeOfCare: [ETypeOfCare.oralHygiene],
+        subtypeOfCare: [],
     }, {
         id: 4604014005427,
         url: 'https://basket-02.wb.ru/vol234/part23445/23445370/images/big/1.jpg',
@@ -553,6 +556,7 @@ export const initialProducts = [
         typeOfSize: 'volume',
         size: '275',
         typeOfCare: [ETypeOfCare.oralHygiene],
+        subtypeOfCare: [],
     }, {
         id: 7322540989762,
         url: 'https://basket-01.wb.ru/vol75/part7502/7502139/images/big/1.jpg',
@@ -565,4 +569,5 @@ export const initialProducts = [
         typeOfSize: 'weight',
         size: '1160',
         typeOfCare: [ETypeOfCare.paper],
+        subtypeOfCare: [],
     },]

@@ -31,14 +31,15 @@ const Pagination: React.FC<PaginationProps> = ({totalCount, perPage}) => {
     }
 
     return (
-        <div className={styles.pagination}>
-            <div onClick={() => navigateToPrevious()} className={styles.previous}>
+        <div data-testid='pagination' className={styles.pagination}>
+            <div data-testid='prevBtn' onClick={() => navigateToPrevious()} className={styles.previous}>
                 <img src={previousIcon} alt="назад"/>
             </div>
             <ul className={styles.pagesList}>
                 {
                     pages.map(p => <li key={p}>
                         <Link
+                            data-testid={currentPage && +currentPage === p ? 'currentPage' : 'page'}
                             onClick={() => scrollToUp()}
                             className={currentPage === p.toString() ? styles.currentPage : styles.page}
                             to={'/catalog/' + p}>
@@ -47,7 +48,7 @@ const Pagination: React.FC<PaginationProps> = ({totalCount, perPage}) => {
                     </li>)
                 }
             </ul>
-            <div onClick={() => navigateToNext()} className={styles.next}>
+            <div data-testid='nextBtn' onClick={() => navigateToNext()} className={styles.next}>
                 <img src={nextIcon} alt="вперед"/>
             </div>
         </div>

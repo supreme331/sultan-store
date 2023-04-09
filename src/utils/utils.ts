@@ -1,3 +1,5 @@
+import {IProduct} from "../store/models/IProduct";
+
 export const scrollToUp = () => {
     window.scrollTo({
         top: 0,
@@ -14,8 +16,12 @@ export async function fetchProductsImitation() {
                 const data = JSON.parse(json);
                 res(data);
             }
-        },300);
+        },500);
     })
 
     return await promise;
+}
+
+export function setDefaultProductsSort(products: IProduct[]) {
+    return  [...products].sort((a, b) => a.price - b.price)
 }

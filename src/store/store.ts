@@ -1,15 +1,17 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
 import catalogReducer from './reducers/CatalogSlice'
 import cartReducer from './reducers/CartSlice'
+import type { PreloadedState } from '@reduxjs/toolkit'
 
 const rootReducer = combineReducers({
     catalogReducer,
     cartReducer,
 });
 
-export const setupStore = () => {
+export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
     return configureStore({
-        reducer: rootReducer
+        reducer: rootReducer,
+        preloadedState
     })
 }
 
